@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Social Hub</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f3e5cb;
+      color: #000;
+    }
+    header {
+      background-color: #a02b1f;
+      color: #f3e5cb;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #7b1f16;
+      padding: 10px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #f3e5cb;
+      text-decoration: none;
+      margin: 5px 15px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .logo {
+      max-width: 100px;
+      display: block;
+      margin: 0 auto 10px;
+    }
+    .section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .link-button {
+      padding: 15px 25px;
+      font-size: 16px;
+      color: #f3e5cb;
+      background-color: #a02b1f;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      transition: background-color 0.3s;
+      width: 200px;
+      max-width: 90vw;
+      box-sizing: border-box;
+    }
+    .link-button:hover {
+      background-color: #7b1f16;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .card {
+      background-color: #fff2db;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    /* Responsive Styles */
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+      nav a {
+        margin: 8px 0;
+      }
+      .button-container {
+        width: 100%;
+        padding: 0 10px;
+      }
+      .link-button {
+        width: 100%;
+        max-width: none;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+        padding: 10px;
+      }
+      .section {
+        padding: 30px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://cdn.discordapp.com/attachments/1186219018542133309/1372327986883465216/Global_Connection_Emblem.png?ex=68265f88&is=68250e08&hm=cb9dcd8486f29adf44d5b4ddf7ee9181312f55e463e506607cbb05361ba608ff&" alt="The Social Hub Logo" class="logo" />
+    <h1>The Social Hub</h1>
+  </header>
+  <nav>
+    <a href="#social">Social Media</a>
+    <a href="#news">News</a>
+    <a href="#tools">Tools</a>
+    <a href="#resources">Resources</a>
+    <a href="#events">Events</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section class="section" id="social">
+    <h2>Social Media</h2>
+    <div class="button-container">
+      <a href="https://facebook.com" class="link-button" target="_blank">Facebook</a>
+      <a href="https://twitter.com" class="link-button" target="_blank">Twitter</a>
+      <a href="https://instagram.com" class="link-button" target="_blank">Instagram</a>
+    </div>
+  </section>
+
+  <section class="section" id="news">
+    <h2>Latest News</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Community Event</h3>
+        <p>Join our upcoming global meetup online!</p>
+      </div>
+      <div class="card">
+        <h3>Feature Launch</h3>
+        <p>We've just rolled out new sharing tools!</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="tools">
+    <h2>Useful Tools</h2>
+    <div class="button-container">
+      <a href="https://canva.com" class="link-button" target="_blank">Canva</a>
+      <a href="https://trello.com" class="link-button" target="_blank">Trello</a>
+      <a href="https://notion.so" class="link-button" target="_blank">Notion</a>
+    </div>
+  </section>
+
+  <section class="section" id="resources">
+    <h2>Learning Resources</h2>
+    <div class="button-container">
+      <a href="https://coursera.org" class="link-button" target="_blank">Coursera</a>
+      <a href="https://edx.org" class="link-button" target="_blank">edX</a>
+      <a href="https://khanacademy.org" class="link-button" target="_blank">Khan Academy</a>
+    </div>
+  </section>
+
+  <section class="section" id="events">
+    <h2>Upcoming Events</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Webinar on Online Collaboration</h3>
+        <p>Explore how to make teamwork more effective in the digital world.</p>
+      </div>
+      <div class="card">
+        <h3>Tech for Good Summit</h3>
+        <p>Discover how technology is driving social impact globally.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <h2>About Us</h2>
+    <p>The Social Hub is a place to connect, share, and grow together in a vibrant community space. We bring the world closer—one link at a time.</p>
+  </section>
+
+  <section class="section" id="contact">
+    <h2>Contact</h2>
+    <p>Join us on Discord: <a href="https://discord.gg/NPmDNNKtw6" target="_blank">https://discord.gg/NPmDNNKtw6</a></p>
+  </section>
+</body>
+</html>
