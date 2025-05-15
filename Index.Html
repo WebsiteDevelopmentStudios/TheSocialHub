@@ -3,33 +3,271 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Minimal Test</title>
+  <title>The Social Hub</title>
+  <meta name="google-signin-client_id" content="202303647205-hkoael6jehqr88t3ch2aiho65brt9ncp.apps.googleusercontent.com" />
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <style>
+    /* Reset & base */
     body {
-      background-color: #f2e6ce;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f6d1b3; /* peach */
+      color: #6e6e6e; /* grey */
     }
+
     header {
-      background-color: #a73e29;
-      color: white;
-      padding: 20px;
+      background-color: #b33a3a; /* red */
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 25px;
+      flex-wrap: wrap;
     }
-    nav a {
-      color: white;
+
+    .logo {
+      height: 60px;
+    }
+
+    h1 {
+      margin: 0 20px;
+      font-size: 26px;
+      flex-grow: 1;
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav a, #google-signin-button, #logout {
+      color: #f6d1b3; /* peach */
       text-decoration: none;
-      margin-right: 15px;
+      font-weight: 600;
+      padding: 9px 16px;
+      border-radius: 6px;
+      background-color: transparent;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      min-width: 110px;
+      text-align: center;
     }
-    nav a:hover {
-      text-decoration: underline;
+
+    nav a:hover, #google-signin-button:hover, #logout:hover {
+      background-color: #a58a6f; /* dark beige */
+      color: #fff;
+    }
+
+    .profile-pic {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-left: 20px;
+    }
+
+    /* Contact section */
+    section#contact {
+      background-color: #fff;
+      margin: 45px auto;
+      padding: 32px 35px;
+      max-width: 620px;
+      border: 2px solid #b33a3a; /* red */
+      border-radius: 14px;
+      text-align: center;
+      color: #6e6e6e;
+    }
+
+    section#contact h2 {
+      color: #b33a3a; /* red */
+      margin-bottom: 12px;
+    }
+
+    .discord-btn {
+      display: inline-block;
+      background-color: #a58a6f; /* dark beige */
+      color: #fff;
+      padding: 14px 24px;
+      border-radius: 10px;
+      font-weight: 700;
+      text-decoration: none;
+      margin-top: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .discord-btn:hover {
+      background-color: #b33a3a; /* red */
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+      }
+
+      h1 {
+        margin: 14px 0;
+        font-size: 24px;
+        width: 100%;
+        text-align: left;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 14px;
+        width: 100%;
+      }
+
+      nav a, #google-signin-button, #logout {
+        min-width: 100%;
+        padding: 14px 0;
+        background-color: #b33a3a; /* red */
+        border-radius: 10px;
+        text-align: center;
+        color: #f6d1b3; /* peach */
+      }
+
+      nav a:hover, #google-signin-button:hover, #logout:hover {
+        background-color: #a58a6f; /* dark beige */
+        color: #fff;
+      }
+
+      .profile-pic {
+        margin-left: 0;
+        margin-top: 18px;
+        align-self: center;
+      }
+    }
+
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 22px;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Minimal Test Header</h1>
-    <nav>
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
+    <img
+      src="https://cdn.discordapp.com/attachments/1186219018542133309/1372327986883465216/Global_Connection_Emblem.png"
+      alt="The Social Hub Logo"
+      class="logo"
+    />
+    <h1>The Social Hub</h1>
+    <nav id="navbar">
+      <a href="#social">Social Media</a>
+      <a href="#news">News</a>
+      <a href="#tools">Tools</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="Product.html">Products</a>
+      <a href="Checkout.html">Checkout</a>
+      <a id="discord-login" href="#">Login with Discord</a>
+      <span id="google-signin-button"></span>
+      <a id="logout" href="#" style="display:none;">Logout</a>
     </nav>
+    <img id="profile-pic" class="profile-pic" src="" alt="Profile Picture" style="display:none;" />
   </header>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Join our community on Discord for support, questions, or collaboration!</p>
+    <a
+      class="discord-btn"
+      href="https://discord.gg/NPmDNNKtw6"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Join Our Discord Server
+    </a>
+  </section>
+
+  <script>
+    // Your existing JavaScript here (unchanged)
+    const sharedUser = {};
+    const profilePic = document.getElementById("profile-pic");
+    const discordLoginBtn = document.getElementById("discord-login");
+    const googleButtonContainer = document.getElementById("google-signin-button");
+    const logoutBtn = document.getElementById("logout");
+
+    function showProfilePic(url) {
+      profilePic.src = url;
+      profilePic.style.display = "block";
+    }
+
+    function showLogout() {
+      logoutBtn.style.display = "inline";
+      discordLoginBtn.style.display = "none";
+      googleButtonContainer.style.display = "none";
+    }
+
+    function resetUI() {
+      profilePic.src = "";
+      profilePic.style.display = "none";
+      logoutBtn.style.display = "none";
+      discordLoginBtn.style.display = "inline";
+      googleButtonContainer.style.display = "inline";
+      localStorage.clear();
+    }
+
+    logoutBtn.addEventListener("click", () => {
+      resetUI();
+      google.accounts.id.disableAutoSelect();
+      window.location.reload();
+    });
+
+    // Google Login
+    window.onload = () => {
+      google.accounts.id.initialize({
+        client_id: "202303647205-hkoael6jehqr88t3ch2aiho65brt9ncp.apps.googleusercontent.com",
+        callback: handleGoogleCredentialResponse
+      });
+      google.accounts.id.renderButton(
+        googleButtonContainer,
+        { theme: "outline", size: "medium" }
+      );
+      google.accounts.id.prompt();
+    };
+
+    function handleGoogleCredentialResponse(response) {
+      const data = parseJwt(response.credential);
+      sharedUser.name = data.name;
+      sharedUser.email = data.email;
+      sharedUser.picture = data.picture;
+      showProfilePic(sharedUser.picture);
+      showLogout();
+    }
+
+    function parseJwt(token) {
+      return JSON.parse(atob(token.split('.')[1]));
+    }
+
+    // Discord Login
+    discordLoginBtn.addEventListener("click", () => {
+      const clientId = "1240381343872718880";
+      const redirectUri = encodeURIComponent("https://thesocialhub.online/api/discord/callback");
+      const discordUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=identify%20email%20guilds`;
+      window.location.href = discordUrl;
+    });
+
+    // Discord Callback Handling (if redirected back)
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get("code");
+    if (code) {
+      fetch(`https://thesocialhub.online/api/discord/callback?code=${code}`)
+        .then(res => res.json())
+        .then(data => {
+          sharedUser.name = data.username;
+          sharedUser.email = data.email;
+          sharedUser.picture = data.avatar;
+          showProfilePic(sharedUser.picture);
+          showLogout();
+        })
+        .catch(err => console.error("Discord login error:", err));
+    }
+  </script>
 </body>
 </html>
