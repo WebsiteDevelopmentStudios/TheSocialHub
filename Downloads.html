@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Downloads</title>
+  <style>
+    .download-btn {
+      padding: 10px 20px;
+      background-color: #f3e5cb;
+      color: 333;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .download-btn:hover {
+      background-color: #f3e5cb;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="download-btn" onclick="downloadFromServer()">Download File</button>
+
+  <script>
+    function downloadFromServer() {
+      const fileUrl = 'https://example.com/path/to/yourfile.pdf'; // Change this to your file URL
+      const fileName = 'downloaded-file.pdf'; // Desired file name
+
+      const a = document.createElement('a');
+      a.href = fileUrl;
+      a.setAttribute('download', fileName);
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+  </script>
+
+</body>
+</html>
