@@ -183,62 +183,69 @@
   </section>
 
   <script>
-    const clientId = "1372536402088038431";
-    const redirectUri = encodeURIComponent(
-      "https://thesocialhub.vercel.app/TheSocialHub.html"
-    );
-    const scope = encodeURIComponent("identify email");
+  const CLIENT_ID = '1372536402088038431';
+  const REDIRECT_URI = 'https://thesocialhub.vercel.app/TheSocialHub.html';
+  const API_ENDPOINT = 'https://discord.com/api/users/@me';
 
-    const loginLink = document.getElementById("discord-login");
-    const logoutLink = document.getElementById("discord-logout");
+  async function getTokenFromUrl() {
+    const fragment = new URLSearchParams(window.location.hash.slice(1));
+    return fragment.get("access_token");
+  }
 
-    // Function to update UI based on login state
-    function updateUI() {
-      const user = JSON.parse(localStorage.getItem("discordUser"));
-      if (user && user.username) {
-        loginLink.style.display = "none";
-        logoutLink.style.display = "inline";
-        logoutLink.textContent = `Logout (${user.username})`;
-      } else {
-        loginLink.style.display = "inline";
-        logoutLink.style.display = "none";
+  async function fetchDiscordUser(token) {
+    const response = await fetch(API_ENDPOINT, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!response.ok) {
+      console.error("Failed to fetch user");
+      return null;
+    }
+
+    const data = await response.json();
+    return data;
+  }
+
+  function updateUI(user) {
+    const loginLink = document.getElementById("login-link");
+    if (user) {
+      const displayName = user.global_name || `${user.username}#${user.discriminator}`;
+      loginLink.textContent = `Logged in as ${displayName}`;
+      loginLink.href = "#";
+    } else {
+      loginLink.textContent = "Login";
+      loginLink.href = "Login.html";
+    }
+  }
+
+  async function initialize() {
+    const storedUser = JSON.parse(localStorage.getItem("discordUser"));
+    if (storedUser) {
+      updateUI(storedUser);
+      return;
+    }
+
+    const token = await getTokenFromUrl();
+    if (token) {
+      const user = await fetchDiscordUser(token);
+      if (user) {
+        localStorage.setItem("discordUser", JSON.stringify(user));
+        updateUI(user);
+        window.history.replaceState({}, document.title, REDIRECT_URI);
       }
     }
+  }
 
-    // On page load, check if URL has code param from Discord OAuth
-    const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get("code");
-
-    if (code) {
-      // In a real app, here you send 'code' to your backend to exchange for token & user info
-      // Demo: simulate successful login with dummy user data
-      const dummyUser = {
-        username: "DiscordUser",
-        id: "1234567890",
-      };
-      localStorage.setItem("discordUser", JSON.stringify(dummyUser));
-
-      // Remove the code param from URL without reloading
-      window.history.replaceState({}, document.title, window.location.pathname);
-
-      updateUI();
-    } else {
-      updateUI();
-    }
-
-    // Redirect to Discord OAuth on login click
-    loginLink.addEventListener("click", (e) => {
-      e.preventDefault();
-      const discordOauthUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}`;
-      window.location.href = discordOauthUrl;
-    });
-
-    // Logout clears localStorage
-    logoutLink.addEventListener("click", (e) => {
-      e.preventDefault();
-      localStorage.removeItem("discordUser");
-      updateUI();
-    });
+  window.onload = initialize;
   </script>
+  <a href="#" onclick="logout()" class="link-button">Logout</a>
+<script>
+  function logout() {
+    localStorage.removeItem("discordUser");
+    window.location.href = REDIRECT_URI;
+  }
+</script>
 </body>
 </html>
