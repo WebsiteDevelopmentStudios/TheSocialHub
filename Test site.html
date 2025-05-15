@@ -1,286 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The Social Hub</title>
-  <meta name="google-signin-client_id" content="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.apps.googleusercontent.com" />
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #f3e5cb;
-      color: #000000;
-    }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Social Hub</title>
+  <meta name="google-signin-client_id" content="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.apps.googleusercontent.com">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f3e5cb;
+      color: #000000;
+    }
 
-    header {
-      background-color: #7b1f16;
-      color: #ffffff;
-      padding: 20px;
-      text-align: center;
-      position: relative;
-    }
+    header {
+      background-color: #7b1f16;
+      color: #ffffff;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
 
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      background-color: #5c1610;
-      padding: 10px;
-      gap: 15px;
-    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: #5c1610;
+      padding: 10px;
+      gap: 15px;
+    }
 
-    nav a {
-      color: #ffffff;
-      text-decoration: none;
-      margin: 5px 15px;
-      font-weight: bold;
-    }
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      line-height: 38px;
+    }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+    nav a:hover {
+      text-decoration: underline;
+    }
 
-    .logo {
-      max-width: 100px;
-      display: block;
-      margin: 0 auto 10px;
-    }
+    .logo {
+      max-width: 100px;
+      display: block;
+      margin: 0 auto 10px;
+    }
 
-    .section {
-      padding: 40px 20px;
-      text-align: center;
-    }
+    .section {
+      padding: 40px 20px;
+      text-align: center;
+    }
 
-    .button-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-      margin-top: 20px;
-    }
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
 
-    .link-button {
-      padding: 15px 25px;
-      font-size: 16px;
-      color: #ffffff;
-      background-color: #7b1f16;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-      text-align: center;
-      transition: background-color 0.3s;
-      display: inline-block;
-    }
+    .link-button {
+      padding: 15px 25px;
+      font-size: 16px;
+      color: #ffffff;
+      background-color: #7b1f16;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      transition: background-color 0.3s;
+      display: inline-block;
+    }
 
-    .link-button:hover {
-      background-color: #5c1610;
-    }
+    .link-button:hover {
+      background-color: #5c1610;
+    }
 
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
 
-    .card {
-      background-color: #fff8ef;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
+    .card {
+      background-color: #fff8ef;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
 
-    .profile-pic {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      object-fit: cover;
-      position: absolute;
-      right: 20px;
-      top: 20px;
-    }
+    .profile-pic {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+    }
 
-    #google-signin-button > div {
-      display: inline-block !important;
-    }
+    #google-signin-button {
+      display: inline-block;
+      vertical-align: middle;
+    }
 
-    /* Optional: style the Google button to blend with nav */
-    #google-signin-button > div > div {
-      border-radius: 8px !important;
-    }
-
-    @media (max-width: 600px) {
-      .button-container {
-        gap: 10px;
-      }
-      .link-button {
-        width: 90%;
-      }
-      nav {
-        justify-content: center;
-        gap: 10px;
-      }
-    }
-  </style>
+    @media (max-width: 600px) {
+      .button-container {
+        gap: 10px;
+      }
+      .link-button {
+        width: 90%;
+      }
+      nav {
+        gap: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <img
-      src="https://cdn.discordapp.com/attachments/1186219018542133309/1372327986883465216/Global_Connection_Emblem.png"
-      alt="The Social Hub Logo"
-      class="logo"
-    />
-    <h1>The Social Hub</h1>
-    <img id="profile-pic" class="profile-pic" src="" alt="" style="display:none;" />
-    <nav id="navbar">
-      <a href="#social">Social Media</a>
-      <a href="#news">News</a>
-      <a href="#tools">Tools</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-      <a href="Product.html">Products</a>
-      <a href="Checkout.html">Checkout</a>
-      <a id="discord-login" href="#">Login with Discord</a>
-      <!-- Google sign-in button container -->
-      <span id="google-signin-button"></span>
-      <a id="logout" href="#" style="display:none;">Logout</a>
-    </nav>
-  </header>
+  <header>
+    <img src="https://cdn.discordapp.com/attachments/1186219018542133309/1372327986883465216/Global_Connection_Emblem.png" alt="The Social Hub Logo" class="logo" />
+    <h1>The Social Hub</h1>
+    <img id="profile-pic" class="profile-pic" src="" alt="Profile Picture" style="display:none;" />
+    <nav id="navbar">
+      <a href="#social">Social Media</a>
+      <a href="#news">News</a>
+      <a href="#tools">Tools</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="Product.html">Products</a>
+      <a href="Checkout.html">Checkout</a>
+      <a id="discord-login" href="#">Login with Discord</a>
+      <!-- Google sign-in button will render here -->
+      <span id="google-signin-button"></span>
+      <a id="logout" href="#" style="display:none;">Logout</a>
+    </nav>
+  </header>
 
-  <!-- Other sections remain unchanged... -->
+  <!-- Other sections remain unchanged... -->
 
-  <script>
-    const clientId = "1372536402088038431";
-    const clientSecret = "4utXCWk2J_6C6c6seQZ_KkHbgOgYWWZH";
-    const redirectUri = "https://thesocialhub.vercel.app/TheSocialHub.html";
-    const scope = "identify email";
+  <script>
+    const clientId = "1372536402088038431";
+    const clientSecret = "4utXCWk2J_6C6c6seQZ_KkHbgOgYWWZH";
+    const redirectUri = "https://thesocialhub.vercel.app/TheSocialHub.html";
+    const scope = "identify email";
 
-    const discordLogin = document.getElementById("discord-login");
-    const logoutBtn = document.getElementById("logout");
-    const profilePic = document.getElementById("profile-pic");
+    const discordLogin = document.getElementById("discord-login");
+    const logoutBtn = document.getElementById("logout");
+    const profilePic = document.getElementById("profile-pic");
 
-    function updateUI() {
-      const user = JSON.parse(localStorage.getItem("user"));
-      if (user) {
-        discordLogin.style.display = "none";
-        // Hide discord-login link
-        document.getElementById("google-signin-button").style.display = "none";
-        logoutBtn.style.display = "inline";
-        if (user.avatar) {
-          profilePic.src = user.avatar;
-          profilePic.style.display = "block";
-        }
-      } else {
-        discordLogin.style.display = "inline";
-        document.getElementById("google-signin-button").style.display = "inline-block";
-        logoutBtn.style.display = "none";
-        profilePic.style.display = "none";
-      }
-    }
+    function updateUI() {
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (user) {
+        discordLogin.style.display = "none";
+        document.getElementById("google-signin-button").style.display = "none";
+        logoutBtn.style.display = "inline";
+        if (user.avatar) {
+          profilePic.src = user.avatar;
+          profilePic.style.display = "block";
+        }
+      } else {
+        discordLogin.style.display = "inline";
+        document.getElementById("google-signin-button").style.display = "inline-block";
+        logoutBtn.style.display = "none";
+        profilePic.style.display = "none";
+      }
+    }
 
-    async function fetchDiscordUser(token) {
-      const res = await fetch("https://discord.com/api/users/@me", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (!res.ok) throw new Error("Failed to fetch Discord user");
-      const data = await res.json();
-      return {
-        username: data.username,
-        avatar: `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png`,
-      };
-    }
+    async function fetchDiscordUser(token) {
+      const res = await fetch("https://discord.com/api/users/@me", {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (!res.ok) throw new Error("Failed to fetch Discord user");
+      const data = await res.json();
+      return {
+        username: data.username,
+        avatar: `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png`
+      };
+    }
 
-    async function exchangeDiscordCode(code) {
-      const params = new URLSearchParams({
-        client_id: clientId,
-        client_secret: clientSecret,
-        grant_type: "authorization_code",
-        code,
-        redirect_uri: redirectUri,
-        scope,
-      });
-      const res = await fetch("https://discord.com/api/oauth2/token", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: params,
-      });
-      if (!res.ok) throw new Error("Token exchange failed");
-      const data = await res.json();
-      return data.access_token;
-    }
+    async function exchangeDiscordCode(code) {
+      const params = new URLSearchParams({
+        client_id: clientId,
+        client_secret: clientSecret,
+        grant_type: "authorization_code",
+        code,
+        redirect_uri: redirectUri,
+        scope
+      });
+      const res = await fetch("https://discord.com/api/oauth2/token", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params
+      });
+      if (!res.ok) throw new Error("Token exchange failed");
+      const data = await res.json();
+      return data.access_token;
+    }
 
-    discordLogin.addEventListener("click", (e) => {
-      e.preventDefault();
-      window.location.href = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(
-        redirectUri
-      )}&response_type=code&scope=${encodeURIComponent(scope)}`;
-    });
+    discordLogin.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.location.href = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=${encodeURIComponent(scope)}`;
+    });
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get("code");
-    if (code) {
-      exchangeDiscordCode(code)
-        .then(fetchDiscordUser)
-        .then((user) => {
-          localStorage.setItem("user", JSON.stringify(user));
-          window.history.replaceState({}, document.title, window.location.pathname);
-          updateUI();
-        })
-        .catch(() => {
-          localStorage.removeItem("user");
-          updateUI();
-        });
-    }
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get("code");
+    if (code) {
+      exchangeDiscordCode(code)
+        .then(fetchDiscordUser)
+        .then(user => {
+          localStorage.setItem("user", JSON.stringify(user));
+          window.history.replaceState({}, document.title, window.location.pathname);
+          updateUI();
+        })
+        .catch(() => {
+          localStorage.removeItem("user");
+          updateUI();
+        });
+    }
 
-    // Google Login setup
-    window.onload = function () {
-      google.accounts.id.initialize({
-        client_id:
-          "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.apps.googleusercontent.com",
-        callback: handleGoogleResponse,
-      });
-      google.accounts.id.renderButton(
-        document.getElementById("google-signin-button"),
-        { theme: "filled_black", size: "medium", type: "standard" }
-      );
-    };
+    // Google Login integration
+    window.onload = function () {
+      google.accounts.id.initialize({
+        client_id: "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.apps.googleusercontent.com",
+        callback: handleGoogleResponse
+      });
+      google.accounts.id.renderButton(
+        document.getElementById("google-signin-button"),
+        { theme: "filled_black", size: "medium", type: "standard" }
+      );
+      updateUI();
+    };
 
-    function handleGoogleResponse(response) {
-      const data = parseJwt(response.credential);
-      const user = {
-        username: data.name,
-        avatar: data.picture,
-      };
-      localStorage.setItem("user", JSON.stringify(user));
-      updateUI();
-    }
+    function handleGoogleResponse(response) {
+      const data = parseJwt(response.credential);
+      const user = {
+        username: data.name,
+        avatar: data.picture
+      };
+      localStorage.setItem("user", JSON.stringify(user));
+      updateUI();
+    }
 
-    function parseJwt(token) {
-      const base64 = token
-        .split(".")[1]
-        .replace(/-/g, "+")
-        .replace(/_/g, "/");
-      const json = decodeURIComponent(
-        atob(base64)
-          .split("")
-          .map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
-          .join("")
-      );
-      return JSON.parse(json);
-    }
+    function parseJwt(token) {
+      const base64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+      const json = decodeURIComponent(atob(base64).split('').map(c =>
+        '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+      ).join(''));
+      return JSON.parse(json);
+    }
 
-    logoutBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      localStorage.removeItem("user");
-      google.accounts.id.disableAutoSelect();
-      updateUI();
-    });
-
-    updateUI();
-  </script>
+    logoutBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      localStorage.removeItem("user");
+      google.accounts.id.disableAutoSelect();
+      updateUI();
+    });
+  </script>
 </body>
 </html>
