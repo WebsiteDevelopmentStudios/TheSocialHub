@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Social Hub</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #e8f0fe; /* light blue background */
+      color: #1a1a1a; /* dark text */
+    }
+    header {
+      background-color: #2c3e50; /* dark navy */
+      color: #ecf0f1; /* light gray */
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: #34495e; /* medium navy */
+      padding: 10px;
+    }
+    nav a {
+      color: #ecf0f1; /* light gray */
+      text-decoration: none;
+      margin: 5px 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .logo {
+      max-width: 100px;
+      display: block;
+      margin: 0 auto 10px;
+    }
+    .section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .link-button {
+      padding: 15px 25px;
+      font-size: 16px;
+      color: #ecf0f1; /* light gray */
+      background-color: #2980b9; /* bright blue */
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      transition: background-color 0.3s;
+      display: inline-block;
+    }
+    .link-button:hover {
+      background-color: #1c5980; /* darker blue */
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .card {
+      background-color: #d6e9fc; /* very light blue */
+      border: 1px solid #a9cce3; /* soft blue border */
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    @media (max-width: 600px) {
+      .button-container {
+        gap: 10px;
+      }
+      .link-button {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img
+      src="https://cdn.discordapp.com/attachments/1186219018542133309/1372327986883465216/Global_Connection_Emblem.png?ex=68265f88&is=68250e08&hm=cb9dcd8486f29adf44d5b4ddf7ee9181312f55e463e506607cbb05361ba608ff&"
+      alt="The Social Hub Logo"
+      class="logo"
+    />
+    <h1>The Social Hub</h1>
+    <nav id="navbar">
+      <a href="#social">Social Media</a>
+      <a href="#news">News</a>
+      <a href="#tools">Tools</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="Product.html">Products</a>
+      <a href="Checkout.html">Checkout</a>
+      <a id="discord-login" href="#">Login with Discord</a>
+      <a id="discord-logout" href="#" style="display:none;">Logout</a>
+    </nav>
+  </header>
+
+  <section class="section" id="social">
+    <h2>Social Media</h2>
+    <div class="button-container">
+      <a
+        href="https://youtube.com/@baneofeternity?si=5M8pdJBAy6loiKdE"
+        class="link-button"
+        target="_blank"
+        >My Youtube</a
+      >
+      <a href="https://github.com/1000000overit" class="link-button" target="_blank"
+        >My Github</a
+      >
+      <a href="https://www.xbox.com/en-US/play/user/Wiki3570" class="link-button" target="_blank"
+        >My Xbox</a
+      >
+    </div>
+  </section>
+
+  <section class="section" id="news">
+    <h2>Latest News</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Community Event</h3>
+        <p>Join our upcoming global meetup online!</p>
+      </div>
+      <div class="card">
+        <h3>Feature Launch</h3>
+        <p>We've just rolled out new sharing tools!</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="tools">
+    <h2>Useful Tools</h2>
+    <div class="button-container">
+      <a href="https://canva.com" class="link-button" target="_blank">Canva</a>
+      <a href="https://trello.com" class="link-button" target="_blank">Trello</a>
+      <a href="https://notion.so" class="link-button" target="_blank">Notion</a>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <h2>About Us</h2>
+    <p>
+      The Social Hub is a place to connect, share, and grow together in a vibrant
+      community space. We bring the world closer—one link at a time.
+    </p>
+  </section>
+
+  <section class="section" id="contact">
+    <h2>Contact</h2>
+    <img
+      src="https://cdn.discordapp.com/attachments/1368101658042830880/1372083667945525309/standard_1.gif?ex=68257bfe&is=68242a7e&hm=dac780a754339018a53c043ed1c2780d437a4027a4a706390cc0eba55b949f64&"
+      alt="Discord GIF"
+      style="max-width: 100%; height: auto; margin-bottom: 20px"
+    />
+    <a href="https://discord.gg/NPmDNNKtw6" target="_blank" class="link-button"
+      >Join us on Discord</a
+    >
+  </section>
+
+  <script>
+    const clientId = "1372536402088038431";
+    const redirectUri = encodeURIComponent(
+      "https://thesocialhub.vercel.app/TheSocialHub.html"
+    );
+    const scope = encodeURIComponent("identify email");
+
+    const loginLink = document.getElementById("discord-login");
+    const logoutLink = document.getElementById("discord-logout");
+
+    // Function to update UI based on login state
+    function updateUI() {
+      const user = JSON.parse(localStorage.getItem("discordUser"));
+      if (user && user.username) {
+        loginLink.style.display = "none";
+        logoutLink.style.display = "inline";
+        logoutLink.textContent = `Logout (${user.username})`;
+      } else {
+        loginLink.style.display = "inline";
+        logoutLink.style.display = "none";
+      }
+    }
+
+    // On page load, check if URL has code param from Discord OAuth
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get("code");
+
+    if (code) {
+      // In a real app, here you send 'code' to your backend to exchange for token & user info
+      // Demo: simulate successful login with dummy user data
+      const dummyUser = {
+        username: "DiscordUser",
+        id: "1234567890",
+      };
+      localStorage.setItem("discordUser", JSON.stringify(dummyUser));
+
+      // Remove the code param from URL without reloading
+      window.history.replaceState({}, document.title, window.location.pathname);
+
+      updateUI();
+    } else {
+      updateUI();
+    }
+
+    // Redirect to Discord OAuth on login click
+    loginLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      const discordOauthUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}`;
+      window.location.href = discordOauthUrl;
+    });
+
+    // Logout clears localStorage
+    logoutLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      localStorage.removeItem("discordUser");
+      updateUI();
+    });
+  </script>
+</body>
+</html>
