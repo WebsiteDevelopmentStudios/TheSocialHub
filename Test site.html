@@ -6,20 +6,21 @@
   <title>The Social Hub</title>
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       background-color: #f3e5cb;
       color: #000000;
     }
-
     header {
       background-color: #7b1f16;
       color: #ffffff;
       padding: 20px;
       text-align: center;
     }
-
     nav {
       display: flex;
       flex-wrap: wrap;
@@ -27,29 +28,24 @@
       background-color: #5c1610;
       padding: 10px;
     }
-
     nav a {
       color: #ffffff;
       text-decoration: none;
       margin: 5px 15px;
       font-weight: bold;
     }
-
     nav a:hover {
       text-decoration: underline;
     }
-
     .logo {
       max-width: 100px;
       display: block;
       margin: 0 auto 10px;
     }
-
     .section {
       padding: 40px 20px;
       text-align: center;
     }
-
     .button-container {
       display: flex;
       flex-direction: column;
@@ -57,7 +53,6 @@
       gap: 15px;
       margin-top: 20px;
     }
-
     .link-button, .google-button {
       padding: 15px 25px;
       font-size: 16px;
@@ -71,26 +66,21 @@
       transition: background-color 0.3s;
       display: inline-block;
     }
-
     .link-button:hover {
       background-color: #5c1610;
     }
-
     .google-button {
       background-color: #4285F4;
     }
-
     .google-button:hover {
       background-color: #3367D6;
     }
-
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
       padding: 20px;
     }
-
     .card {
       background-color: #fff8ef;
       border: 1px solid #ccc;
@@ -98,7 +88,6 @@
       padding: 20px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
-
     .profile {
       display: flex;
       align-items: center;
@@ -106,13 +95,11 @@
       gap: 10px;
       margin-top: 10px;
     }
-
     .profile img {
       width: 40px;
       height: 40px;
       border-radius: 50%;
     }
-
     @media (max-width: 600px) {
       .button-container {
         gap: 10px;
@@ -143,7 +130,12 @@
     </nav>
   </header>
 
-  <!-- content omitted for brevity -->
+  <!-- Actual page sections -->
+  <section id="social" class="section"><h2>Social Media</h2><p>Follow and connect with others through various platforms.</p></section>
+  <section id="news" class="section"><h2>News</h2><p>Latest updates and trending topics.</p></section>
+  <section id="tools" class="section"><h2>Tools</h2><p>Useful tools and resources at your fingertips.</p></section>
+  <section id="about" class="section"><h2>About</h2><p>Learn more about The Social Hub and our mission.</p></section>
+  <section id="contact" class="section"><h2>Contact</h2><p>Have questions? Reach out to us anytime.</p></section>
 
   <script>
     const clientId = "1372536402088038431";
@@ -219,6 +211,13 @@
           localStorage.setItem("discordUser", JSON.stringify(user));
           window.history.replaceState({}, document.title, window.location.pathname);
           updateUI();
+
+          // Scroll back to previous section
+          const savedHash = localStorage.getItem("postLoginHash");
+          if (savedHash) {
+            window.location.hash = savedHash;
+            localStorage.removeItem("postLoginHash");
+          }
         })
         .catch((error) => {
           console.error("Login failed:", error);
@@ -231,6 +230,7 @@
 
     loginLink.addEventListener("click", (e) => {
       e.preventDefault();
+      localStorage.setItem("postLoginHash", window.location.hash);
       const discordOauthUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=${encodeURIComponent(scope)}`;
       window.location.href = discordOauthUrl;
     });
@@ -239,6 +239,10 @@
       e.preventDefault();
       localStorage.removeItem("discordUser");
       updateUI();
+    });
+
+    googleLoginBtn.addEventListener("click", () => {
+      localStorage.setItem("postLoginHash", window.location.hash);
     });
 
     googleLogoutBtn.addEventListener("click", (e) => {
@@ -266,6 +270,13 @@
       };
       localStorage.setItem("googleUser", JSON.stringify(user));
       updateUI();
+
+      // Restore scroll after Google login
+      const savedHash = localStorage.getItem("postLoginHash");
+      if (savedHash) {
+        window.location.hash = savedHash;
+        localStorage.removeItem("postLoginHash");
+      }
     }
   </script>
 </body>
