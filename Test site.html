@@ -4,17 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Social Hub</title>
-<style>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <style>
   body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background-color: #f3e5cb; /* off-white/beige */
-    color: #000000; /* black */
+    background-color: #f3e5cb;
+    color: #000000;
   }
 
   header {
-    background-color: #7b1f16; /\* muted red-brown */
-    color: #ffffff; /* white \*/
+    background-color: #7b1f16;
+    color: #ffffff;
     padding: 20px;
     text-align: center;
   }
@@ -23,18 +24,19 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: #5c1610; /\* darker muted red-brown \*/
+    background-color: #5c1610;
     padding: 10px;
   }
 
-  nav a {
-    color: #ffffff; /\* white \*/
+  nav a, #google-logout {
+    color: #ffffff;
     text-decoration: none;
     margin: 5px 15px;
     font-weight: bold;
+    cursor: pointer;
   }
 
-  nav a\:hover {
+  nav a:hover {
     text-decoration: underline;
   }
 
@@ -60,8 +62,8 @@
   .link-button {
     padding: 15px 25px;
     font-size: 16px;
-    color: #ffffff; /\* white */
-    background-color: #7b1f16; /* muted red-brown \*/
+    color: #ffffff;
+    background-color: #7b1f16;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -71,8 +73,8 @@
     display: inline-block;
   }
 
-  .link-button\:hover {
-    background-color: #5c1610; /\* darker muted red-brown \*/
+  .link-button:hover {
+    background-color: #5c1610;
   }
 
   .card-grid {
@@ -83,7 +85,7 @@
   }
 
   .card {
-    background-color: #fff8ef; /\* lighter beige \*/
+    background-color: #fff8ef;
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 20px;
@@ -98,12 +100,12 @@
       width: 90%;
     }
   }
-</style>
+  </style>
 </head>
 <body>
   <header>
     <img
-      src="https://cdn.discordapp.com/attachments/1186219018542133309/1372327986883465216/Global_Connection_Emblem.png?ex=68265f88&is=68250e08&hm=cb9dcd8486f29adf44d5b4ddf7ee9181312f55e463e506607cbb05361ba608ff&"
+      src="https://cdn.discordapp.com/attachments/1186219018542133309/1372327986883465216/Global_Connection_Emblem.png"
       alt="The Social Hub Logo"
       class="logo"
     />
@@ -118,24 +120,31 @@
       <a href="Checkout.html">Checkout</a>
       <a id="discord-login" href="#">Login with Discord</a>
       <a id="discord-logout" href="#" style="display:none;">Logout</a>
+      <a id="google-logout" style="display:none;">Logout</a>
     </nav>
+    <!-- Google Sign-in button -->
+    <div id="g_id_onload"
+      data-client_id="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"
+      data-context="signin"
+      data-callback="handleGoogleCredentialResponse"
+      data-auto_prompt="false">
+    </div>
+    <div class="g_id_signin"
+      data-type="standard"
+      data-shape="rectangular"
+      data-theme="filled_black"
+      data-text="signin_with"
+      data-size="large"
+      data-logo_alignment="left">
+    </div>
   </header>
 
   <section class="section" id="social">
     <h2>Social Media</h2>
     <div class="button-container">
-      <a
-        href="https://youtube.com/@baneofeternity?si=5M8pdJBAy6loiKdE"
-        class="link-button"
-        target="_blank"
-        >My Youtube</a
-      >
-      <a href="https://github.com/1000000overit" class="link-button" target="_blank"
-        >My Github</a
-      >
-      <a href="https://www.xbox.com/en-US/play/user/Wiki3570" class="link-button" target="_blank"
-        >My Xbox</a
-      >
+      <a href="https://youtube.com/@baneofeternity?si=5M8pdJBAy6loiKdE" class="link-button" target="_blank">My Youtube</a>
+      <a href="https://github.com/1000000overit" class="link-button" target="_blank">My Github</a>
+      <a href="https://www.xbox.com/en-US/play/user/Wiki3570" class="link-button" target="_blank">My Xbox</a>
     </div>
   </section>
 
@@ -173,19 +182,17 @@
   <section class="section" id="contact">
     <h2>Contact</h2>
     <img
-      src="https://cdn.discordapp.com/attachments/1368101658042830880/1372083667945525309/standard_1.gif?ex=68257bfe&is=68242a7e&hm=dac780a754339018a53c043ed1c2780d437a4027a4a706390cc0eba55b949f64&"
+      src="https://cdn.discordapp.com/attachments/1368101658042830880/1372083667945525309/standard_1.gif"
       alt="Discord GIF"
       style="max-width: 100%; height: auto; margin-bottom: 20px"
     />
-    <h3>(*Yes we do have a free bot maker*)</h3>
     <a href="https://discord.gg/NPmDNNKtw6" target="_blank" class="link-button"
-      >Join us on Discord</a
-    >
+      >Join us on Discord</a>
   </section>
 
   <script>
   const clientId = "1372536402088038431";
-  const clientSecret = "4utXCWk2J_6C6c6seQZ_KkHbgOgYWWZH"; // ⚠️ Replace this and be cautious about exposing it!
+  const clientSecret = "4utXCWk2J_6C6c6seQZ_KkHbgOgYWWZH"; // Replace in production
   const redirectUri = "https://thesocialhub.vercel.app/TheSocialHub.html";
   const scope = "identify email";
 
@@ -210,13 +217,8 @@
         Authorization: `Bearer ${token}`
       }
     });
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch Discord user");
-    }
-
-    const data = await response.json();
-    return data;
+    if (!response.ok) throw new Error("Failed to fetch Discord user");
+    return await response.json();
   }
 
   async function exchangeCodeForToken(code) {
@@ -231,21 +233,14 @@
 
     const response = await fetch("https://discord.com/api/oauth2/token", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body
     });
 
-    if (!response.ok) {
-      throw new Error("Token exchange failed");
-    }
-
-    const data = await response.json();
-    return data.access_token;
+    if (!response.ok) throw new Error("Token exchange failed");
+    return (await response.json()).access_token;
   }
 
-  // Check if URL has ?code=...
   const urlParams = new URLSearchParams(window.location.search);
   const code = urlParams.get("code");
 
@@ -254,7 +249,7 @@
       .then(fetchDiscordUser)
       .then((user) => {
         localStorage.setItem("discordUser", JSON.stringify(user));
-        window.history.replaceState({}, document.title, window.location.pathname); // clean URL
+        window.history.replaceState({}, document.title, window.location.pathname);
         updateUI();
       })
       .catch((error) => {
@@ -268,9 +263,7 @@
 
   loginLink.addEventListener("click", (e) => {
     e.preventDefault();
-    const discordOauthUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(
-      redirectUri
-    )}&response_type=code&scope=${encodeURIComponent(scope)}`;
+    const discordOauthUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=${encodeURIComponent(scope)}`;
     window.location.href = discordOauthUrl;
   });
 
@@ -279,13 +272,36 @@
     localStorage.removeItem("discordUser");
     updateUI();
   });
-  </script>
-  <a href="#" onclick="logout()" class="link-button">Logout</a>
-<script>
-  function logout() {
-    localStorage.removeItem("discordUser");
-    window.location.href = REDIRECT_URI;
+
+  // GOOGLE LOGIN
+  function handleGoogleCredentialResponse(response) {
+    const credential = response.credential;
+    const payload = JSON.parse(atob(credential.split('.')[1]));
+    localStorage.setItem('googleUser', JSON.stringify(payload));
+    updateGoogleUI(payload);
   }
-</script>
+
+  function updateGoogleUI(user) {
+    const googleLogout = document.getElementById('google-logout');
+    if (user) {
+      document.querySelector('.g_id_signin').style.display = 'none';
+      googleLogout.style.display = 'inline';
+      googleLogout.textContent = `Logout (${user.name})`;
+    } else {
+      document.querySelector('.g_id_signin').style.display = 'block';
+      googleLogout.style.display = 'none';
+    }
+  }
+
+  function googleLogout() {
+    localStorage.removeItem('googleUser');
+    updateGoogleUI(null);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const user = JSON.parse(localStorage.getItem('googleUser'));
+    updateGoogleUI(user);
+  });
+  </script>
 </body>
 </html>
