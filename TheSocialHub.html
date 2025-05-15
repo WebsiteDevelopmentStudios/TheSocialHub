@@ -299,7 +299,7 @@
       <a href="#contact">Contact</a>
       <a href="Product.html">Products</a>
       <a href="Checkout.html">Checkout</a>
-      <a href="https://thesocialhub.vercel.app/TheSocialHub.html">Terminate Logout</a>
+      <a href="https://thesocialhub.vercel.app/TheSocialHub.html">Terminate Login</a>
     </nav>
   </div>
   
@@ -427,7 +427,7 @@
         if (userData.avatar) {
           sharedUser.picture = `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`;
         } else {
-          <img src="https://cdn.discordapp.com/attachments/1186219018542133309/1372719345582739479/images_6.jpg?ex=6827cc03&is=68267a83&hm=60b8557f1151c9097e3db372416c0ae172dfc9abf97913ca426966304c330b61&"/>
+          sharedUser.picture = 'https://cdn.discordapp.com/embed/avatars/0.png'; // Default avatar
         }
         
         showProfilePic(sharedUser.picture);
