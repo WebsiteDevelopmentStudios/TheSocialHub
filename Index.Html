@@ -7,34 +7,41 @@
   <meta name="google-signin-client_id" content="202303647205-hkoael6jehqr88t3ch2aiho65brt9ncp.apps.googleusercontent.com" />
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <style>
-    /* Reset & base */
+    /* Updated colors and style from your working Products page */
+
+    /* Base styles */
     body {
+      font-family: Arial, sans-serif;
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f6d1b3; /* peach */
-      color: #6e6e6e; /* grey */
+      background-color: #f3e5cb; /* off-white/beige background */
+      color: #000; /* black text */
     }
 
+    /* Header styles */
     header {
-      background-color: #b33a3a; /* red */
-      color: #fff;
+      background-color: #a02b1f; /* muted red-brown */
+      color: #f3e5cb; /* off-white/beige text */
+      padding: 20px;
+      text-align: center;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 15px 25px;
       flex-wrap: wrap;
     }
 
+    /* Logo size */
     .logo {
       height: 60px;
     }
 
+    /* Heading */
     h1 {
       margin: 0 20px;
       font-size: 26px;
       flex-grow: 1;
     }
 
+    /* Navigation */
     nav {
       display: flex;
       gap: 18px;
@@ -43,11 +50,11 @@
     }
 
     nav a, #google-signin-button, #logout {
-      color: #f6d1b3; /* peach */
+      color: #f3e5cb; /* off-white/beige */
       text-decoration: none;
       font-weight: 600;
       padding: 9px 16px;
-      border-radius: 6px;
+      border-radius: 8px;
       background-color: transparent;
       transition: background-color 0.3s ease, color 0.3s ease;
       min-width: 110px;
@@ -55,10 +62,11 @@
     }
 
     nav a:hover, #google-signin-button:hover, #logout:hover {
-      background-color: #a58a6f; /* dark beige */
-      color: #fff;
+      background-color: #7b1f16; /* darker red-brown hover */
+      color: #f3e5cb;
     }
 
+    /* Profile pic */
     .profile-pic {
       height: 40px;
       width: 40px;
@@ -69,27 +77,28 @@
 
     /* Contact section */
     section#contact {
-      background-color: #fff;
+      background-color: #fff2db; /* light beige */
       margin: 45px auto;
       padding: 32px 35px;
       max-width: 620px;
-      border: 2px solid #b33a3a; /* red */
-      border-radius: 14px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
       text-align: center;
-      color: #6e6e6e;
+      color: #000;
     }
 
     section#contact h2 {
-      color: #b33a3a; /* red */
+      color: #a02b1f; /* muted red-brown */
       margin-bottom: 12px;
     }
 
+    /* Discord button */
     .discord-btn {
       display: inline-block;
-      background-color: #a58a6f; /* dark beige */
-      color: #fff;
+      background-color: #a02b1f; /* muted red-brown */
+      color: #f3e5cb; /* off-white/beige */
       padding: 14px 24px;
-      border-radius: 10px;
+      border-radius: 8px;
       font-weight: 700;
       text-decoration: none;
       margin-top: 16px;
@@ -97,7 +106,7 @@
     }
 
     .discord-btn:hover {
-      background-color: #b33a3a; /* red */
+      background-color: #7b1f16; /* darker red-brown */
     }
 
     /* Responsive */
@@ -124,15 +133,15 @@
       nav a, #google-signin-button, #logout {
         min-width: 100%;
         padding: 14px 0;
-        background-color: #b33a3a; /* red */
+        background-color: #a02b1f; /* muted red-brown */
         border-radius: 10px;
         text-align: center;
-        color: #f6d1b3; /* peach */
+        color: #f3e5cb;
       }
 
       nav a:hover, #google-signin-button:hover, #logout:hover {
-        background-color: #a58a6f; /* dark beige */
-        color: #fff;
+        background-color: #7b1f16; /* darker red-brown */
+        color: #f3e5cb;
       }
 
       .profile-pic {
@@ -261,7 +270,8 @@
         .then(res => res.json())
         .then(data => {
           sharedUser.name = data.username;
-          sharedUser.email = data.email;
+   
+         sharedUser.email = data.email;
           sharedUser.picture = data.avatar;
           showProfilePic(sharedUser.picture);
           showLogout();
