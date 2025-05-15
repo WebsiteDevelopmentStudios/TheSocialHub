@@ -6,11 +6,88 @@
   <title>The Social Hub</title>
   <meta name="google-signin-client_id" content="202303647205-hkoael6jehqr88t3ch2aiho65brt9ncp.apps.googleusercontent.com">
   <script src="https://accounts.google.com/gsi/client" async defer></script>
-  <!-- (Your CSS remains unchanged...) -->
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f2e6ce;
+      color: #1e1e1e;
+    }
+
+    header {
+      background-color: #a73e29;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+    }
+
+    .logo {
+      height: 60px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    nav {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .profile-pic {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    section#contact {
+      background-color: #fff;
+      margin: 40px auto;
+      padding: 30px;
+      max-width: 600px;
+      border: 2px solid #a73e29;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    section#contact h2 {
+      color: #a73e29;
+    }
+
+    .discord-btn {
+      display: inline-block;
+      background-color: #7289da;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+
+    .discord-btn:hover {
+      background-color: #5b6eae;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <img src="https://cdn.discordapp.com/attachments/1186219018542133309/1372327986883465216/Global_Connection_Emblem.png" alt="The Social Hub Logo" class="logo" />
+    <img src="https://cdn.discordapp.com/attachments/1186219018542133309/1372327986883465216/Global_Connection_Emblem.png?ex=68270848&is=6825b6c8&hm=1208905e35741498f45e758e88d068224307046e99a7e975a8fac095230c6e01&" alt="The Social Hub Logo" class="logo" />
     <h1>The Social Hub</h1>
     <img id="profile-pic" class="profile-pic" src="" alt="Profile Picture" style="display:none;" />
     <nav id="navbar">
@@ -27,124 +104,94 @@
     </nav>
   </header>
 
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Join our community on Discord for support, questions, or collaboration!</p>
+    <a class="discord-btn" href="https://discord.gg/NPmDNNKtw6" target="_blank">Join Our Discord Server</a>
+  </section>
+
   <script>
-    const clientId = "202303647205-hkoael6jehqr88t3ch2aiho65brt9ncp.apps.googleusercontent.com";
-    const redirectUri = "https://thesocialhub.vercel.app/TheSocialHub.html";
-    const scope = "identify email";
-
-    const discordLogin = document.getElementById("discord-login");
-    const logoutBtn = document.getElementById("logout");
+    const sharedUser = {};
     const profilePic = document.getElementById("profile-pic");
+    const discordLoginBtn = document.getElementById("discord-login");
+    const googleButtonContainer = document.getElementById("google-signin-button");
+    const logoutBtn = document.getElementById("logout");
 
-    function updateUI() {
-      const user = JSON.parse(localStorage.getItem("user"));
-      if (user) {
-        discordLogin.style.display = "none";
-        document.getElementById("google-signin-button").style.display = "none";
-        logoutBtn.style.display = "inline";
-        if (user.avatar) {
-          profilePic.src = user.avatar;
-          profilePic.style.display = "block";
-        }
-      } else {
-        discordLogin.style.display = "inline";
-        document.getElementById("google-signin-button").style.display = "inline-block";
-        logoutBtn.style.display = "none";
-        profilePic.style.display = "none";
-      }
+    function showProfilePic(url) {
+      profilePic.src = url;
+      profilePic.style.display = "block";
     }
 
-    async function fetchDiscordUser(token) {
-      const res = await fetch("https://discord.com/api/users/@me", {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      if (!res.ok) throw new Error("Failed to fetch Discord user");
-      const data = await res.json();
-      return {
-        username: data.username,
-        avatar: `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png`
-      };
+    function showLogout() {
+      logoutBtn.style.display = "inline";
+      discordLoginBtn.style.display = "none";
+      googleButtonContainer.style.display = "none";
     }
 
-    async function exchangeDiscordCode(code) {
-      const params = new URLSearchParams({
-        client_id: clientId,
-        client_secret: "9jsDKKl_jh__em-ci0Bc27sxsQVIjm6B", // Fill in your secret here
-        grant_type: "authorization_code",
-        code,
-        redirect_uri: redirectUri,
-        scope
-      });
-      const res = await fetch("https://discord.com/api/oauth2/token", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: params
-      });
-      if (!res.ok) throw new Error("Token exchange failed");
-      const data = await res.json();
-      return data.access_token;
+    function resetUI() {
+      profilePic.src = "";
+      profilePic.style.display = "none";
+      logoutBtn.style.display = "none";
+      discordLoginBtn.style.display = "inline";
+      googleButtonContainer.style.display = "inline";
+      localStorage.clear();
     }
 
-    discordLogin.addEventListener("click", (e) => {
-      e.preventDefault();
-      window.location.href = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=${encodeURIComponent(scope)}`;
+    logoutBtn.addEventListener("click", () => {
+      resetUI();
+      google.accounts.id.disableAutoSelect();
+      window.location.reload();
     });
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get("code");
-    if (code) {
-      exchangeDiscordCode(code)
-        .then(fetchDiscordUser)
-        .then(user => {
-          localStorage.setItem("user", JSON.stringify(user));
-          window.history.replaceState({}, document.title, window.location.pathname);
-          updateUI();
-        })
-        .catch(() => {
-          localStorage.removeItem("user");
-          updateUI();
-        });
-    }
-
-    // GOOGLE LOGIN: Setup
-    window.onload = function () {
+    // Google Login
+    window.onload = () => {
       google.accounts.id.initialize({
-        client_id: clientId,
-        callback: handleGoogleResponse
+        client_id: "202303647205-hkoael6jehqr88t3ch2aiho65brt9ncp.apps.googleusercontent.com",
+        callback: handleGoogleCredentialResponse
       });
       google.accounts.id.renderButton(
-        document.getElementById("google-signin-button"),
-        { theme: "filled_black", size: "medium", type: "standard" }
+        googleButtonContainer,
+        { theme: "outline", size: "medium" }
       );
-      updateUI();
+      google.accounts.id.prompt();
     };
 
-    function handleGoogleResponse(response) {
-      const userObject = parseJwt(response.credential);
-      const user = {
-        username: userObject.name,
-        email: userObject.email,
-        avatar: userObject.picture
-      };
-      localStorage.setItem("user", JSON.stringify(user));
-      updateUI();
+    function handleGoogleCredentialResponse(response) {
+      const data = parseJwt(response.credential);
+      sharedUser.name = data.name;
+      sharedUser.email = data.email;
+      sharedUser.picture = data.picture;
+      showProfilePic(sharedUser.picture);
+      showLogout();
     }
 
     function parseJwt(token) {
-      const base64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
-      const json = decodeURIComponent(atob(base64).split('').map(c =>
-        '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
-      ).join(''));
-      return JSON.parse(json);
+      return JSON.parse(atob(token.split('.')[1]));
     }
 
-    logoutBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      localStorage.removeItem("user");
-      google.accounts.id.disableAutoSelect();
-      updateUI();
-      window.location.href = "https://accounts.google.com/Logout"; // Optional: force Google logout
+    // Discord Login
+    discordLoginBtn.addEventListener("click", () => {
+      const clientId = "1240381343872718880";
+      const redirectUri = encodeURIComponent("https://thesocialhub.online/api/discord/callback");
+      const discordUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=identify%20email%20guilds`;
+      window.location.href = discordUrl;
     });
+
+    // Discord Callback Handling (if redirected back)
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get("code");
+    if (code) {
+      fetch(`https://thesocialhub.online/api/discord/callback?code=${code}`)
+        .then(res => res.json())
+        .then(data => {
+          sharedUser.name = data.username;
+          sharedUser.email = data.email;
+          sharedUser.picture = data.avatar;
+          showProfilePic(sharedUser.picture);
+          showLogout();
+        })
+        .catch(err => console.error("Discord login error:", err));
+    }
   </script>
 </body>
 </html>
