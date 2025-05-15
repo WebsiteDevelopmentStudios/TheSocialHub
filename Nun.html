@@ -4,47 +4,51 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Social Hub</title>
-  <!-- Replace only the <style> section with this updated version -->
-<style>
+  <style>
   body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background-color: #f4f6f7; /* light gray background */
-    color: #1c2833; /* dark navy text */
+    background-color: #f3e5cb; /* off-white/beige */
+    color: #000000; /* black */
   }
+
   header {
-    background-color: #1c2833; /* deep navy */
-    color: #f4f6f7; /* light gray */
+    background-color: #7b1f16; /* muted red-brown */
+    color: #ffffff; /* white */
     padding: 20px;
     text-align: center;
   }
+
   nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: #2e4053; /* darker navy */
+    background-color: #5c1610; /* darker muted red-brown */
     padding: 10px;
   }
+
   nav a {
-    color: #f4f6f7; /* light gray */
+    color: #ffffff; /* white */
     text-decoration: none;
     margin: 5px 15px;
     font-weight: bold;
-    cursor: pointer;
   }
+
   nav a:hover {
     text-decoration: underline;
-    color: #5dade2; /* sky blue on hover */
   }
+
   .logo {
     max-width: 100px;
     display: block;
     margin: 0 auto 10px;
   }
+
   .section {
     padding: 40px 20px;
     text-align: center;
   }
+
   .button-container {
     display: flex;
     flex-direction: column;
@@ -52,11 +56,12 @@
     gap: 15px;
     margin-top: 20px;
   }
+
   .link-button {
     padding: 15px 25px;
     font-size: 16px;
-    color: #ffffff;
-    background-color: #5dade2; /* sky blue */
+    color: #ffffff; /* white */
+    background-color: #7b1f16; /* muted red-brown */
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -65,22 +70,26 @@
     transition: background-color 0.3s;
     display: inline-block;
   }
+
   .link-button:hover {
-    background-color: #3498db; /* deeper sky blue */
+    background-color: #5c1610; /* darker muted red-brown */
   }
+
   .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     padding: 20px;
   }
+
   .card {
-    background-color: #ffffff;
-    border: 1px solid #d6eaf8; /* subtle light blue */
+    background-color: #fff8ef; /* lighter beige */
+    border: 1px solid #ccc;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   }
+
   @media (max-width: 600px) {
     .button-container {
       gap: 10px;
@@ -89,7 +98,7 @@
       width: 90%;
     }
   }
-</style>
+  </style>
 </head>
 <body>
   <header>
