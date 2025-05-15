@@ -7,50 +7,41 @@
   <meta name="google-signin-client_id" content="202303647205-hkoael6jehqr88t3ch2aiho65brt9ncp.apps.googleusercontent.com" />
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <style>
-    /* Updated colors and style from your working Products page */
-
-    /* Base styles */
+    /* Your updated colors & style */
     body {
+      background-color: #f3e5cb;
+      color: #000;
       font-family: Arial, sans-serif;
       margin: 0;
-      background-color: #f3e5cb; /* off-white/beige background */
-      color: #000; /* black text */
+      padding: 0;
     }
-
-    /* Header styles */
     header {
-      background-color: #a02b1f; /* muted red-brown */
-      color: #f3e5cb; /* off-white/beige text */
+      background-color: #a02b1f;
+      color: #f3e5cb;
       padding: 20px;
-      text-align: center;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
     }
-
-    /* Logo size */
     .logo {
       height: 60px;
     }
-
-    /* Heading */
     h1 {
       margin: 0 20px;
       font-size: 26px;
       flex-grow: 1;
     }
-
-    /* Navigation */
     nav {
       display: flex;
       gap: 18px;
       align-items: center;
       flex-wrap: wrap;
     }
-
-    nav a, #google-signin-button, #logout {
-      color: #f3e5cb; /* off-white/beige */
+    nav a,
+    #google-signin-button,
+    #logout {
+      color: #f3e5cb;
       text-decoration: none;
       font-weight: 600;
       padding: 9px 16px;
@@ -60,13 +51,12 @@
       min-width: 110px;
       text-align: center;
     }
-
-    nav a:hover, #google-signin-button:hover, #logout:hover {
-      background-color: #7b1f16; /* darker red-brown hover */
+    nav a:hover,
+    #google-signin-button:hover,
+    #logout:hover {
+      background-color: #7b1f16;
       color: #f3e5cb;
     }
-
-    /* Profile pic */
     .profile-pic {
       height: 40px;
       width: 40px;
@@ -74,10 +64,8 @@
       object-fit: cover;
       margin-left: 20px;
     }
-
-    /* Contact section */
     section#contact {
-      background-color: #fff2db; /* light beige */
+      background-color: #fff2db;
       margin: 45px auto;
       padding: 32px 35px;
       max-width: 620px;
@@ -86,17 +74,14 @@
       text-align: center;
       color: #000;
     }
-
     section#contact h2 {
-      color: #a02b1f; /* muted red-brown */
+      color: #a02b1f;
       margin-bottom: 12px;
     }
-
-    /* Discord button */
     .discord-btn {
       display: inline-block;
-      background-color: #a02b1f; /* muted red-brown */
-      color: #f3e5cb; /* off-white/beige */
+      background-color: #a02b1f;
+      color: #f3e5cb;
       padding: 14px 24px;
       border-radius: 8px;
       font-weight: 700;
@@ -104,53 +89,48 @@
       margin-top: 16px;
       transition: background-color 0.3s ease;
     }
-
     .discord-btn:hover {
-      background-color: #7b1f16; /* darker red-brown */
+      background-color: #7b1f16;
     }
-
-    /* Responsive */
     @media (max-width: 768px) {
       header {
         flex-direction: column;
         align-items: flex-start;
         padding: 20px;
       }
-
       h1 {
         margin: 14px 0;
         font-size: 24px;
         width: 100%;
         text-align: left;
       }
-
       nav {
         flex-direction: column;
         gap: 14px;
         width: 100%;
       }
-
-      nav a, #google-signin-button, #logout {
+      nav a,
+      #google-signin-button,
+      #logout {
         min-width: 100%;
         padding: 14px 0;
-        background-color: #a02b1f; /* muted red-brown */
+        background-color: #a02b1f;
         border-radius: 10px;
         text-align: center;
         color: #f3e5cb;
       }
-
-      nav a:hover, #google-signin-button:hover, #logout:hover {
-        background-color: #7b1f16; /* darker red-brown */
+      nav a:hover,
+      #google-signin-button:hover,
+      #logout:hover {
+        background-color: #7b1f16;
         color: #f3e5cb;
       }
-
       .profile-pic {
         margin-left: 0;
         margin-top: 18px;
         align-self: center;
       }
     }
-
     @media (max-width: 400px) {
       h1 {
         font-size: 22px;
@@ -195,7 +175,6 @@
   </section>
 
   <script>
-    // Your existing JavaScript here (unchanged)
     const sharedUser = {};
     const profilePic = document.getElementById("profile-pic");
     const discordLoginBtn = document.getElementById("discord-login");
@@ -270,8 +249,7 @@
         .then(res => res.json())
         .then(data => {
           sharedUser.name = data.username;
-   
-         sharedUser.email = data.email;
+          sharedUser.email = data.email;
           sharedUser.picture = data.avatar;
           showProfilePic(sharedUser.picture);
           showLogout();
