@@ -146,7 +146,6 @@
 
   <script>
     const clientId = "202303647205-hkoael6jehqr88t3ch2aiho65brt9ncp.apps.googleusercontent.com";
-    const clientSecret = "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";
     const redirectUri = "https://thesocialhub.vercel.app/TheSocialHub.html";
     const scope = "identify email";
 
@@ -246,11 +245,12 @@
     }
 
     logoutBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      localStorage.removeItem("user");
-      google.accounts.id.disableAutoSelect();
-      updateUI();
-    });
+  e.preventDefault();
+  localStorage.removeItem("user");
+  google.accounts.id.disableAutoSelect();
+  updateUI();
+  window.location.href = "https://accounts.google.com/Logout"; // optional unified logout
+});
   </script>
 </body>
 </html>
