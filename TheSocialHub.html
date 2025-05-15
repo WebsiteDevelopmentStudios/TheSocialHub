@@ -386,8 +386,8 @@
 
     // Discord Login
     discordLoginBtn.addEventListener("click", () => {
-      const clientId = "1240381343872718880";
-      const redirectUri = encodeURIComponent("https://thesocialhub.online/api/discord/callback");
+      const clientId = "1372714920981823528";
+      const redirectUri = encodeURIComponent("https://thesocialhub.vercel.app/TheSocialHub.html");
       const discordUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=identify%20email%20guilds`;
       window.location.href = discordUrl;
     });
@@ -396,16 +396,43 @@
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get("code");
     if (code) {
-      fetch(`https://thesocialhub.online/api/discord/callback?code=${code}`)
-        .then(res => res.json())
-        .then(data => {
-          sharedUser.name = data.username;
-          sharedUser.email = data.email;
-          sharedUser.picture = data.avatar;
-          showProfilePic(sharedUser.picture);
-          showLogout();
-        })
-        .catch(err => console.error("Discord login error:", err));
+      // Create the form data to send
+      const formData = new FormData();
+      formData.append('client_id', '1372714920981823528');
+      formData.append('client_secret', 'CAq_mGF6mkA5CIGMtDQjsK8EysywxkpI');
+      formData.append('grant_type', 'authorization_code');
+      formData.append('code', code);
+      formData.append('redirect_uri', 'https://thesocialhub.vercel.app/TheSocialHub.html');
+      
+      fetch('https://discord.com/api/oauth2/token', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Get user data with the access token
+        return fetch('https://discord.com/api/users/@me', {
+          headers: {
+            Authorization: `Bearer ${data.access_token}`
+          }
+        });
+      })
+      .then(response => response.json())
+      .then(userData => {
+        sharedUser.name = userData.username;
+        sharedUser.email = userData.email;
+        
+        // Set avatar URL if it exists
+        if (userData.avatar) {
+          sharedUser.picture = `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`;
+        } else {
+          sharedUser.picture = 'https://cdn.discordapp.com/embed/avatars/0.png'; // Default avatar
+        }
+        
+        showProfilePic(sharedUser.picture);
+        showLogout();
+      })
+      .catch(err => console.error("Discord login error:", err));
     }
   </script>
 </body>
