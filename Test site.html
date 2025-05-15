@@ -386,7 +386,7 @@
 
     // Discord Login
     discordLoginBtn.addEventListener("click", () => {
-      const clientId = "1372536402088038431";
+      const clientId = "1372714920981823528";
       const redirectUri = encodeURIComponent("https://thesocialhub.vercel.app/TheSocialHub.html");
       const discordUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=identify%20email%20guilds`;
       window.location.href = discordUrl;
@@ -398,11 +398,11 @@
     if (code) {
       // Create the form data to send
       const formData = new FormData();
-      formData.append('client_id', '1372536402088038431');
-      formData.append('client_secret', '8feVNRvw34QrT-St--YXIT9I8bOvkzYc');
+      formData.append('client_id', '1372714920981823528');
+      formData.append('client_secret', 'CAq_mGF6mkA5CIGMtDQjsK8EysywxkpI');
       formData.append('grant_type', 'authorization_code');
       formData.append('code', code);
-      formData.append('redirect_uri', 'https://thesocialhub.online/api/discord/callback');
+      formData.append('redirect_uri', 'https://thesocialhub.vercel.app/TheSocialHub.html');
       
       fetch('https://discord.com/api/oauth2/token', {
         method: 'POST',
