@@ -21,6 +21,8 @@
       align-items: center;
       justify-content: space-between;
       padding: 10px 20px;
+      flex-wrap: wrap;
+      position: relative;
     }
 
     .logo {
@@ -28,7 +30,7 @@
     }
 
     h1 {
-      margin: 0;
+      margin: 0 10px;
       font-size: 24px;
     }
 
@@ -36,16 +38,25 @@
       display: flex;
       gap: 10px;
       align-items: center;
+      flex-wrap: wrap;
+      flex-grow: 1;
+      justify-content: flex-end;
     }
 
     nav a {
       color: #fff;
       text-decoration: none;
       font-weight: bold;
+      min-width: 100px;
+      text-align: center;
     }
 
     nav a:hover {
       text-decoration: underline;
+    }
+
+    #google-signin-button {
+      min-width: 130px;
     }
 
     .profile-pic {
@@ -83,11 +94,93 @@
     .discord-btn:hover {
       background-color: #5b6eae;
     }
+
+    /* Hamburger menu */
+    #menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      width: 30px;
+      height: 25px;
+      justify-content: space-between;
+    }
+
+    #menu-toggle div {
+      height: 4px;
+      background: #fff;
+      border-radius: 2px;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        background-color: #a73e29;
+        width: 100%;
+        display: none;
+        margin-top: 10px;
+        border-radius: 8px;
+        padding: 10px 0;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      nav a, #google-signin-button, #logout {
+        min-width: unset;
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      nav a:first-child, #google-signin-button:first-child, #logout:first-child {
+        border-top: none;
+      }
+
+      #menu-toggle {
+        display: flex;
+      }
+
+      header {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+      }
+
+      .logo {
+        height: 50px;
+      }
+
+      h1 {
+        font-size: 20px;
+        margin-left: 10px;
+        flex-grow: 1;
+        text-align: center;
+        order: 2;
+      }
+      
+      #profile-pic {
+        order: 3;
+        margin-left: 10px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 18px;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
     <img src="https://cdn.discordapp.com/attachments/1186219018542133309/1372327986883465216/Global_Connection_Emblem.png?ex=68270848&is=6825b6c8&hm=1208905e35741498f45e758e88d068224307046e99a7e975a8fac095230c6e01&" alt="The Social Hub Logo" class="logo" />
+    <div id="menu-toggle" aria-label="Toggle menu" role="button" tabindex="0">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
     <h1>The Social Hub</h1>
     <img id="profile-pic" class="profile-pic" src="" alt="Profile Picture" style="display:none;" />
     <nav id="navbar">
@@ -107,7 +200,7 @@
   <section id="contact">
     <h2>Contact Me</h2>
     <p>Join our community on Discord for support, questions, or collaboration!</p>
-    <a class="discord-btn" href="https://discord.gg/NPmDNNKtw6" target="_blank">Join Our Discord Server</a>
+    <a class="discord-btn" href="https://discord.gg/NPmDNNKtw6" target="_blank" rel="noopener noreferrer">Join Our Discord Server</a>
   </section>
 
   <script>
@@ -116,6 +209,8 @@
     const discordLoginBtn = document.getElementById("discord-login");
     const googleButtonContainer = document.getElementById("google-signin-button");
     const logoutBtn = document.getElementById("logout");
+    const menuToggle = document.getElementById("menu-toggle");
+    const navbar = document.getElementById("navbar");
 
     function showProfilePic(url) {
       profilePic.src = url;
@@ -192,6 +287,19 @@
         })
         .catch(err => console.error("Discord login error:", err));
     }
+
+    // Toggle menu on mobile
+    menuToggle.addEventListener("click", () => {
+      navbar.classList.toggle("show");
+    });
+
+    // Optional: toggle menu via keyboard for accessibility
+    menuToggle.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        navbar.classList.toggle("show");
+      }
+    });
   </script>
 </body>
 </html>
