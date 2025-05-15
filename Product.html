@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products - The Social Hub</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f3e5cb;
+      color: #000;
+    }
+    header {
+      background-color: #a02b1f;
+      color: #f3e5cb;
+      padding: 20px;
+      text-align: center;
+    }
+    .products-section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .product {
+      background-color: #fff2db;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    .product h3 {
+      margin-top: 0;
+    }
+    .buy-button {
+      margin-top: 10px;
+      display: inline-block;
+      background-color: #a02b1f;
+      color: #f3e5cb;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+    .buy-button:hover {
+      background-color: #7b1f16;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Our Products</h1>
+  </header>
+
+  <section class="products-section">
+    <div class="product-grid">
+      <div class="product">
+        <h3>Product 1</h3>
+        <p>Amazing feature-packed item to enhance your life.</p>
+        <a href="checkout.html" class="buy-button">Buy Now</a>
+      </div>
+      <div class="product">
+        <h3>Product 2</h3>
+        <p>Reliable and stylish, perfect for daily use.</p>
+        <a href="checkout.html" class="buy-button">Buy Now</a>
+      </div>
+      <div class="product">
+        <h3>Product 3</h3>
+        <p>Compact, powerful, and budget-friendly.</p>
+        <a href="checkout.html" class="buy-button">Buy Now</a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
