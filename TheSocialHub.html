@@ -426,7 +426,7 @@
         if (userData.avatar) {
           sharedUser.picture = `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`;
         } else {
-          sharedUser.picture = 'https://cdn.discordapp.com/embed/avatars/0.png'; // Default avatar
+          formData.append('redirect_uri', 'https://thesocialhub.vercel.app/TheSocialHub.html');
         }
         
         showProfilePic(sharedUser.picture);
