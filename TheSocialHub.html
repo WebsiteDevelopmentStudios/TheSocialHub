@@ -226,27 +226,17 @@
 
     // Google Login integration
     window.onload = function () {
-      google.accounts.id.initialize({
-        client_id: "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.apps.googleusercontent.com",
-        callback: handleGoogleResponse
-      });
-      google.accounts.id.renderButton(
-        document.getElementById("google-signin-button"),
-        { theme: "filled_black", size: "medium", type: "standard" }
-      );
-      updateUI();
-    };
-
-    function handleGoogleResponse(response) {
-      const data = parseJwt(response.credential);
-      const user = {
-        username: data.name,
-        avatar: data.picture
-      };
-      localStorage.setItem("user", JSON.stringify(user));
-      updateUI();
-    }
-
+  google.accounts.id.initialize({
+    client_id: "202303647205-hkoael6jehqr88t3ch2aiho65brt9ncp.apps.googleusercontent.com", // correct Client ID
+    callback: handleGoogleResponse
+  });
+  google.accounts.id.renderButton(
+    document.getElementById("google-signin-button"),
+    { theme: "filled_black", size: "medium", type: "standard" }
+  );
+  updateUI();
+};
+    
     function parseJwt(token) {
       const base64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
       const json = decodeURIComponent(atob(base64).split('').map(c =>
