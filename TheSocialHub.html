@@ -183,62 +183,101 @@
   </section>
 
   <script>
-  const CLIENT_ID = '1372536402088038431';
-  const REDIRECT_URI = 'https://thesocialhub.vercel.app/TheSocialHub.html';
-  const API_ENDPOINT = 'https://discord.com/api/users/@me';
+  const clientId = "1372536402088038431";
+  const clientSecret = "4utXCWk2J_6C6c6seQZ_KkHbgOgYWWZH"; // ⚠️ Replace this and be cautious about exposing it!
+  const redirectUri = "https://thesocialhub.vercel.app/TheSocialHub.html";
+  const scope = "identify email";
 
-  async function getTokenFromUrl() {
-    const fragment = new URLSearchParams(window.location.hash.slice(1));
-    return fragment.get("access_token");
+  const loginLink = document.getElementById("discord-login");
+  const logoutLink = document.getElementById("discord-logout");
+
+  function updateUI() {
+    const user = JSON.parse(localStorage.getItem("discordUser"));
+    if (user && user.username) {
+      loginLink.style.display = "none";
+      logoutLink.style.display = "inline";
+      logoutLink.textContent = `Logout (${user.username})`;
+    } else {
+      loginLink.style.display = "inline";
+      logoutLink.style.display = "none";
+    }
   }
 
   async function fetchDiscordUser(token) {
-    const response = await fetch(API_ENDPOINT, {
+    const response = await fetch("https://discord.com/api/users/@me", {
       headers: {
         Authorization: `Bearer ${token}`
       }
     });
 
     if (!response.ok) {
-      console.error("Failed to fetch user");
-      return null;
+      throw new Error("Failed to fetch Discord user");
     }
 
     const data = await response.json();
     return data;
   }
 
-  function updateUI(user) {
-    const loginLink = document.getElementById("login-link");
-    if (user) {
-      const displayName = user.global_name || `${user.username}#${user.discriminator}`;
-      loginLink.textContent = `Logged in as ${displayName}`;
-      loginLink.href = "#";
-    } else {
-      loginLink.textContent = "Login";
-      loginLink.href = "Login.html";
+  async function exchangeCodeForToken(code) {
+    const body = new URLSearchParams({
+      client_id: clientId,
+      client_secret: clientSecret,
+      grant_type: "authorization_code",
+      code,
+      redirect_uri: redirectUri,
+      scope
+    });
+
+    const response = await fetch("https://discord.com/api/oauth2/token", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body
+    });
+
+    if (!response.ok) {
+      throw new Error("Token exchange failed");
     }
+
+    const data = await response.json();
+    return data.access_token;
   }
 
-  async function initialize() {
-    const storedUser = JSON.parse(localStorage.getItem("discordUser"));
-    if (storedUser) {
-      updateUI(storedUser);
-      return;
-    }
+  // Check if URL has ?code=...
+  const urlParams = new URLSearchParams(window.location.search);
+  const code = urlParams.get("code");
 
-    const token = await getTokenFromUrl();
-    if (token) {
-      const user = await fetchDiscordUser(token);
-      if (user) {
+  if (code) {
+    exchangeCodeForToken(code)
+      .then(fetchDiscordUser)
+      .then((user) => {
         localStorage.setItem("discordUser", JSON.stringify(user));
-        updateUI(user);
-        window.history.replaceState({}, document.title, REDIRECT_URI);
-      }
-    }
+        window.history.replaceState({}, document.title, window.location.pathname); // clean URL
+        updateUI();
+      })
+      .catch((error) => {
+        console.error("Login failed:", error);
+        localStorage.removeItem("discordUser");
+        updateUI();
+      });
+  } else {
+    updateUI();
   }
 
-  window.onload = initialize;
+  loginLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    const discordOauthUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(
+      redirectUri
+    )}&response_type=code&scope=${encodeURIComponent(scope)}`;
+    window.location.href = discordOauthUrl;
+  });
+
+  logoutLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    localStorage.removeItem("discordUser");
+    updateUI();
+  });
   </script>
   <a href="#" onclick="logout()" class="link-button">Logout</a>
 <script>
