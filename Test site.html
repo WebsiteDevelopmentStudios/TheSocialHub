@@ -1,105 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Downloads</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      background-color: #333;
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      margin: 0;
-      padding: 20px;
-      box-sizing: border-box;
-    }
-
-    h1, h2 {
-      text-align: center;
-      font-size: 6vw;
-      margin: 20px 0 10px;
-    }
-
-    .button-container {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      align-items: center;
-      width: 100%;
-      max-width: 400px;
-    }
-
-    .btn {
-      padding: 16px 28px;
-      background-color: #333; /* muted red-brown */
-      color: #e6bc5c;
-      border: none;
-      border-radius: 12px;
-      font-size: 5vw;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      width: 100%;
-      text-align: center;
-      font-weight: bold;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-
-    .btn:hover {
-      background-color: #333;
-      transform: translateY(-2px);
-    }
-
-    .btn:active {
-      transform: translateY(0);
-    }
-
-    @media (min-width: 600px) {
-      h1, h2 {
-        font-size: 32px;
-      }
-
-      .btn {
-        font-size: 18px;
-        padding: 14px 28px;
-      }
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout - The Social Hub</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f3e5cb;
+      color: #000;
+    }
+    header {
+      background-color: #333;
+      color: #f3e5cb;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+    .main-navigation {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    #navbar a {
+      color: #f3e5cb;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 16px;
+      background-color: #4a2f25;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    #navbar a:hover {
+      background-color: #3c251d;
+      transform: translateY(-2px);
+    }
+    .checkout-section {
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: #333;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #333;
+      border-radius: 5px;
+    }
+    .checkout-button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 15px;
+      background-color: #e6bc5c;
+      color: #f3e5cb;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .checkout-button:hover {
+      background-color: #333;
+    }
+  </style>
 </head>
 <body>
-  <h1>Minecraft Downloads</h1>
-  <div class="button-container">
-    <button class="btn" onclick="downloadFromServer()">Download Minecraft 1.21.80</button>
-    <button class="btn" onclick="downloadFromlink()">Download Zombie apocalypse mod</button>
-    <button class="btn" onclick="downloadFromthelink()">Download One Block</button>
-  </div>
-  <h2>Go Back</h2>
-  <div class="button-container">
-    <button class="btn" onclick="goBack()">Back to Social Hub</button>
-  </div>
+  <header>
+    <h1>Checkout</h1>
+    <div class="main-navigation">
+      <nav id="navbar">
+        <a href="https://thesocialhub.vercel.app/TheSocialHub.html">Back</a>
+      </nav>
+    </div>
+  </header>
 
-  <script>
-    function downloadFromServer() {
-      const fileUrl = 'https://www.mediafire.com/file/pvq3wi6bldhw0e1/Minecraft+1.21.80.03.zip/file';
-      window.open(fileUrl, '_blank');
-    }
+  <section class="checkout-section">
+    <form id="checkout-form" action="https://formspree.io/f/mjkwjebn" method="POST">
+      <label for="discord">Discord Username (include #tag)</label>
+      <input type="text" id="discord" name="discord" placeholder="e.g. us"/>
 
-    function downloadFromlink() {
-      const fileUrl = 'https://www.mediafire.com/file/wc109zd2h34aro1/TSZA_V3.9.0.1_%2528SP%2529.mcaddon/file';
-      window.open(fileUrl, '_blank');
-    }
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required />
 
-    function downloadFromthelink() {
-      const fileUrl = 'https://www.mediafire.com/file/adm84iptxy35mc5/One_Block_%2528Spring_to_Life%2521%2529_v%253D1.5.9_By_DtA_MC.mcworld/file';
-      window.open(fileUrl, '_blank');
-    }
+      <label for="product">Select Product</label>
+      <select id="product" name="product" required>
+        <option value="">--Choose a product--</option>
+        <option value="Product 2">Free Bot</option>
+        <option value="Product 3">Free Nitro</option>
+      </select>
 
-    function goBack() {
-      window.location.href = 'https://thesocialhub.vercel.app/TheSocialHub.html';
-    }
-  </script>
+      <label for="address">Address</label>
+      <input type="text" id="address" name="address" required />
+
+      <button type="submit" class="checkout-button">Place Order</button>
+    </form>
+  </section>
+
+  <script>
+    document.getElementById("checkout-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      alert("Order placed successfully! A confirmation email will be sent shortly.");
+      this.reset();
+    });
+  </script>
 </body>
 </html>
