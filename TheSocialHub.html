@@ -332,6 +332,22 @@
     const googleButtonContainer = document.getElementById("google-signin-button");
     const logoutBtn = document.getElementById("logout");
 
+    // Check if user is already logged in when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      checkLoginStatus();
+    });
+
+    function checkLoginStatus() {
+      const userData = localStorage.getItem('socialHubUser');
+      
+      if (userData) {
+        const user = JSON.parse(userData);
+        Object.assign(sharedUser, user);
+        showProfilePic(user.picture);
+        showLogout();
+      }
+    }
+
     function showProfilePic(url) {
       profilePic.src = url;
       profilePic.style.display = "block";
@@ -349,13 +365,21 @@
       logoutBtn.style.display = "none";
       discordLoginBtn.style.display = "inline";
       googleButtonContainer.style.display = "inline";
-      localStorage.clear();
+      
+      // Clear localStorage
+      localStorage.removeItem('socialHubUser');
+      
+      // Reset shared user object
+      Object.keys(sharedUser).forEach(key => delete sharedUser[key]);
+      
+      // For Google logout
+      google.accounts.id.disableAutoSelect();
     }
 
-    logoutBtn.addEventListener("click", () => {
+    logoutBtn.addEventListener("click", (e) => {
+      e.preventDefault();
       resetUI();
-      google.accounts.id.disableAutoSelect();
-      window.location.reload();
+      // Don't reload the page to prevent the glitch
     });
 
     // Google Login
@@ -368,14 +392,25 @@
         googleButtonContainer,
         { theme: "outline", size: "medium" }
       );
-      google.accounts.id.prompt();
+      
+      // Only prompt if user is not already logged in
+      if (!localStorage.getItem('socialHubUser')) {
+        google.accounts.id.prompt();
+      }
     };
 
     function handleGoogleCredentialResponse(response) {
       const data = parseJwt(response.credential);
+      
+      // Store user data
       sharedUser.name = data.name;
       sharedUser.email = data.email;
       sharedUser.picture = data.picture;
+      sharedUser.provider = 'google';
+      
+      // Save to localStorage
+      localStorage.setItem('socialHubUser', JSON.stringify(sharedUser));
+      
       showProfilePic(sharedUser.picture);
       showLogout();
     }
@@ -395,6 +430,7 @@
     // Discord Callback Handling (if redirected back)
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get("code");
+    
     if (code) {
       // Create the form data to send
       const formData = new FormData();
@@ -410,6 +446,9 @@
       })
       .then(response => response.json())
       .then(data => {
+        // Store the token for future use
+        localStorage.setItem('discordToken', data.access_token);
+          
         // Get user data with the access token
         return fetch('https://discord.com/api/users/@me', {
           headers: {
@@ -421,6 +460,7 @@
       .then(userData => {
         sharedUser.name = userData.username;
         sharedUser.email = userData.email;
+        sharedUser.provider = 'discord';
         
         // Set avatar URL if it exists
         if (userData.avatar) {
@@ -429,10 +469,21 @@
           sharedUser.picture = 'https://cdn.discordapp.com/embed/avatars/0.png'; // Default avatar
         }
         
+        // Save to localStorage
+        localStorage.setItem('socialHubUser', JSON.stringify(sharedUser));
+        
         showProfilePic(sharedUser.picture);
         showLogout();
+        
+        // Remove the code from URL to prevent re-authentication on refresh
+        window.history.replaceState({}, document.title, window.location.pathname);
       })
-      .catch(err => console.error("Discord login error:", err));
+      .catch(err => {
+        console.error("Discord login error:", err);
+        
+        // If token exchange fails, remove code from URL
+        window.history.replaceState({}, document.title, window.location.pathname);
+      });
     }
   </script>
 </body>
