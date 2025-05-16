@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Downloads</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      background-color: #f3e5cb;
+      background-color: #333;
       font-family: Arial, sans-serif;
       display: flex;
       flex-direction: column;
@@ -13,28 +14,34 @@
       justify-content: center;
       min-height: 100vh;
       margin: 0;
-      padding: 0;
+      padding: 20px;
       box-sizing: border-box;
+    }
+
+    h1, h2 {
+      text-align: center;
+      font-size: 6vw;
+      margin: 20px 0 10px;
     }
 
     .button-container {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 24px;
       align-items: center;
       width: 100%;
-      max-width: 300px;
+      max-width: 400px;
     }
 
     .btn {
-      padding: 12px 24px;
-      background-color: #5e3d31; /* muted red-brown */
-      color: #ffffff;
+      padding: 16px 28px;
+      background-color: #333; /* muted red-brown */
+      color: #e6bc5c;
       border: none;
-      border-radius: 10px;
-      font-size: 16px;
+      border-radius: 12px;
+      font-size: 5vw;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.2s ease;
       width: 100%;
       text-align: center;
       font-weight: bold;
@@ -42,31 +49,42 @@
     }
 
     .btn:hover {
-      background-color: #4a2f25;
+      background-color: #333;
       transform: translateY(-2px);
     }
-    
+
     .btn:active {
       transform: translateY(0);
+    }
+
+    @media (min-width: 600px) {
+      h1, h2 {
+        font-size: 32px;
+      }
+
+      .btn {
+        font-size: 18px;
+        padding: 14px 28px;
+      }
     }
   </style>
 </head>
 <body>
-<h1>Minecraft Downloads</h1>
+  <h1>Minecraft Downloads</h1>
   <div class="button-container">
     <button class="btn" onclick="downloadFromServer()">Download Minecraft 1.21.80</button>
     <button class="btn" onclick="downloadFromlink()">Download Zombie apocalypse mod</button>
     <button class="btn" onclick="downloadFromthelink()">Download One Block</button>
   </div>
-<h2>Go Back</h2>
-  <div class="button-contaoner">
+  <h2>Go Back</h2>
+  <div class="button-container">
     <button class="btn" onclick="goBack()">Back to Social Hub</button>
   </div>
-  
+
   <script>
     function downloadFromServer() {
       const fileUrl = 'https://www.mediafire.com/file/pvq3wi6bldhw0e1/Minecraft+1.21.80.03.zip/file';
-      window.open(fileUrl, '_blank'); // MediaFire doesn't support direct download, so open in new tab
+      window.open(fileUrl, '_blank');
     }
 
     function downloadFromlink() {
@@ -74,17 +92,14 @@
       window.open(fileUrl, '_blank');
     }
 
-    
-     function downloadFromthelink() {
+    function downloadFromthelink() {
       const fileUrl = 'https://www.mediafire.com/file/adm84iptxy35mc5/One_Block_%2528Spring_to_Life%2521%2529_v%253D1.5.9_By_DtA_MC.mcworld/file';
-       window.open(fileUrl, '_blank');
+      window.open(fileUrl, '_blank');
     }
-    
+
     function goBack() {
-      window.location.href = 'https://thesocialhub.vercel.app/
-TheSocialHub.html';
+      window.location.href = 'https://thesocialhub.vercel.app/TheSocialHub.html';
     }
   </script>
-
 </body>
 </html>
