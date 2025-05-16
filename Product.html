@@ -8,14 +8,15 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background-color: #f3e5cb;
-      color: #000;
+      background-color: #121212;
+      color: #fff;
     }
     header {
-      background-color: #333;
-      color: #f3e5cb;
+      background-color: #222;
+      color: #e6bc5c;
       padding: 20px;
       text-align: center;
+      border-bottom: 1px solid #333;
     }
     .products-section {
       padding: 40px 20px;
@@ -28,29 +29,36 @@
       padding: 20px;
     }
     .product {
-      background-color: #333;
-      border: 1px solid #ccc;
+      background-color: #222;
+      border: 1px solid #e6bc5c;
       border-radius: 10px;
       padding: 20px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
     .product h3 {
       margin-top: 0;
+      color: #e6bc5c;
+    }
+    .product p {
+      color: #ccc;
     }
     .buy-button {
       margin-top: 10px;
       display: inline-block;
       background-color: #e6bc5c;
-      color: #f3e5cb;
+      color: #000;
       padding: 10px 20px;
       border: none;
-      border-radius: 8px;
+      border-radius: 25px;
       text-decoration: none;
       font-size: 16px;
-      transition: background-color 0.3s;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.2s;
     }
     .buy-button:hover {
-      background-color: #7b1f16;
+      background-color: #d4aa4a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     }
   </style>
 </head>
