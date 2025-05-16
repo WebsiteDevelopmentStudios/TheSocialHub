@@ -23,9 +23,33 @@
             padding: 40px 20px;
         }
         
-        header {
-            text-align: center;
-            margin-bottom: 50px;
+        .nav-container {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            padding: 8px 16px;
+            border: 1px solid #333;
+            border-radius: 50px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .back-button:hover {
+            background-color: rgba(212, 175, 55, 0.1);
+            transform: translateX(-5px);
+        }
+        
+        .back-button svg {
+            margin-right: 8px;
         }
         
         h1 {
@@ -131,6 +155,15 @@
 <body>
     <div class="container">
         <header>
+            <div class="nav-container">
+                <a href="TheSocialHub.html" class="back-button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 12H5" stroke="#d4af37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 19L5 12L12 5" stroke="#d4af37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
             <h1>The Social Hub</h1>
             <p class="tagline">Your one-stop destination for amazing products and social connections</p>
         </header>
@@ -158,7 +191,7 @@
             <div class="featured-box">
                 <h2>Join Our Community</h2>
                 <p>The Social Hub is more than just a marketplace—it's a community. Connect with like-minded individuals, share your experiences, and discover new products recommended by people with similar interests.</p>
-                <a href="Product.html" class="cta-button">Explore Products</a>
+                <a href="Products.html" class="cta-button">Explore Products</a>
             </div>
             
             <div class="section">
