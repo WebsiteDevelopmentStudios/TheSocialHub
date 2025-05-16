@@ -16,55 +16,85 @@
       color: #f3e5cb;
       padding: 20px;
       text-align: center;
+      position: relative;
+    }
+    .main-navigation {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    #navbar a {
+      color: #f3e5cb;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 16px;
+      background-color: #4a2f25;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      display: inline-block;
+    }
+    #navbar a:hover {
+      background-color: #3c251d;
+      transform: translateY(-2px);
     }
     .checkout-section {
       max-width: 600px;
       margin: 40px auto;
-      background-color: #333;
+      background-color: #fff;
       padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      color: #333;
     }
     label {
       display: block;
       margin-top: 15px;
+      font-weight: bold;
+      color: #333;
     }
     input, select {
       width: 100%;
       padding: 10px;
       margin-top: 5px;
-      border: 1px solid #333;
+      border: 1px solid #ccc;
       border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
     }
     .checkout-button {
-      margin-top: 20px;
+      margin-top: 25px;
       width: 100%;
       padding: 15px;
       background-color: #e6bc5c;
-      color: #f3e5cb;
+      color: #333;
       font-size: 16px;
+      font-weight: bold;
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
     .checkout-button:hover {
-      background-color: #333;
+      background-color: #d4aa4a;
+    }
+    #checkout-form {
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Checkout</h1>
-
-      <div class="main-navigation">
-    <nav id="navbar">
-      <a href="https://thesocialhub.vercel.app/TheSocialHub.html">Back</a>
-    </nav>
-      </div>
+    <div class="main-navigation">
+      <nav id="navbar">
+        <a href="https://thesocialhub.vercel.app/TheSocialHub.html">Back</a>
+      </nav>
+    </div>
   </header>
 
   <section class="checkout-section">
-    <form action="https://formspree.io/f/mjkwjebn" method="POST">
+    <form id="checkout-form" action="https://formspree.io/f/mjkwjebn" method="POST">
       <label for="discord">Discord Username (include #tag)</label>
       <input type="text" id="discord" name="discord" placeholder="e.g. us"/>
 
@@ -72,7 +102,7 @@
       <input type="email" id="email" name="email" required />
 
       <label for="product">Select Product</label>
-      <select id="product" name="product" requ<select id="product" name="product" required>
+      <select id="product" name="product" required>
         <option value="">--Choose a product--</option>
         <option value="Product 2">Free Bot</option>
         <option value="Product 3">Free Nitro</option>
