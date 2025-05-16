@@ -104,8 +104,10 @@
 
   <section class="checkout-section">
     <form id="checkout-form" action="https://formspree.io/f/mjkwjebn" method="POST">
+      <input type="hidden" name="_redirect" value="https://thesocialhub.vercel.app/thank-you.html" />
+
       <label for="discord">Discord Username (include #tag)</label>
-      <input type="text" id="discord" name="discord" placeholder="e.g. us"/>
+      <input type="text" id="discord" name="discord" placeholder="e.g. us" />
 
       <label for="email">Email Address</label>
       <input type="email" id="email" name="email" required />
@@ -123,13 +125,5 @@
       <button type="submit" class="checkout-button">Place Order</button>
     </form>
   </section>
-
-  <script>
-    document.getElementById("checkout-form").addEventListener("submit", function(event) {
-      event.preventDefault();
-      alert("Order placed successfully! A confirmation email will be sent shortly.");
-      this.reset();
-    });
-  </script>
 </body>
 </html>
