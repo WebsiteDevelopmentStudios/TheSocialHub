@@ -79,6 +79,9 @@
     <button class="btn" onclick="downloadFromServer()">Download Minecraft 1.21.80</button>
     <button class="btn" onclick="downloadFromlink()">Download Zombie apocalypse mod</button>
     <button class="btn" onclick="downloadFromthelink()">Download One Block</button>
+        <button class="btn" onclick="download()">Download secret trapdoors</button>
+    <button class="btn" onclick="download1()">Download connected glass</button>
+    <button class="btn" onclick="download2()">Download invisible item frames</button>
   </div>
   <h2>Go Back</h2>
   <div class="button-container">
@@ -98,6 +101,21 @@
 
     function downloadFromthelink() {
       const fileUrl = 'https://www.mediafire.com/file/adm84iptxy35mc5/One_Block_%2528Spring_to_Life%2521%2529_v%253D1.5.9_By_DtA_MC.mcworld/file';
+      window.open(fileUrl, '_blank');
+    }
+
+    function download() {
+      const fileUrl = 'https://www.mediafire.com/file/x6jou1q4jb2lylb/CamouflageDoorAddon.mcaddon/file';
+      window.open(fileUrl, '_blank');
+    }
+
+    function download1() {
+      const fileUrl = 'https://www.mediafire.com/file/kmanvkh4iwxzk1i/Conneted_Glasses.mcpack/file';
+      window.open(fileUrl, '_blank');
+    }
+
+    function download2() {
+      const fileUrl = 'https://www.mediafire.com/file/xyxb8kucsdcksye/InvisibleFrames.mcpack/file';
       window.open(fileUrl, '_blank');
     }
 
