@@ -58,12 +58,35 @@
     <button class="btn" onclick="goBack()">Back to Social Hub</button>
   </div>
 
+  <div class="button-container">
+    <button class="btn" onclick="downloadFromlink()">Download Zombie apocalypse mod</button>
+  </div>
+
+  <div class="button-container">
+    <button class="btn" onclick="downloadFromthelink()">Download One Block</button>
+  </div>
+
+  <div class="button-contaoner">
+    <button class="btn" onclick="goBack()">Back to Social Hub</button>
+  </div>
+  
   <script>
     function downloadFromServer() {
       const fileUrl = 'https://www.mediafire.com/file/pvq3wi6bldhw0e1/Minecraft+1.21.80.03.zip/file';
       window.open(fileUrl, '_blank'); // MediaFire doesn't support direct download, so open in new tab
     }
 
+    function downloadFromlink() {
+      const fileUrl = 'https://www.mediafire.com/file/wc109zd2h34aro1/TSZA_V3.9.0.1_%2528SP%2529.mcaddon/file';
+      window.open(fileUrl, '_blank');
+    }
+
+    
+     function downloadFromthelink() {
+      const fileUrl = 'https://www.mediafire.com/file/adm84iptxy35mc5/One_Block_%2528Spring_to_Life%2521%2529_v%253D1.5.9_By_DtA_MC.mcworld/file';
+       window.open(fileUrl, '_blank');
+    }
+    
     function goBack() {
       window.location.href = 'https://thesocialhub.vercel.app/
 TheSocialHub.html';
