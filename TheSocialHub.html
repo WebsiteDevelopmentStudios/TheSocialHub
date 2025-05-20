@@ -670,10 +670,9 @@
       </div>
     </div>
   </footer>
-<script>
+  <script>
     const sharedUser = {};
     const profilePic = document.getElementById("profile-pic");
-    const usernameDisplay = document.getElementById("username-display"); // Add username element reference
     const discordLoginBtn = document.getElementById("discord-login");
     const googleButtonContainer = document.getElementById("google-signin-button");
     const logoutBtn = document.getElementById("logout");
@@ -685,12 +684,11 @@
 
     function checkLoginStatus() {
       const userData = localStorage.getItem('socialHubUser');
-      
+
       if (userData) {
         const user = JSON.parse(userData);
         Object.assign(sharedUser, user);
         showProfilePic(user.picture);
-        showUsername(user.name); // Display username
         showLogout();
       }
     }
@@ -698,12 +696,6 @@
     function showProfilePic(url) {
       profilePic.src = url;
       profilePic.style.display = "block";
-    }
-
-    // Add function to display username
-    function showUsername(name) {
-      usernameDisplay.textContent = name;
-      usernameDisplay.style.display = "inline-block";
     }
 
     function showLogout() {
@@ -715,18 +707,16 @@
     function resetUI() {
       profilePic.src = "";
       profilePic.style.display = "none";
-      usernameDisplay.textContent = ""; // Clear username
-      usernameDisplay.style.display = "none"; // Hide username element
       logoutBtn.style.display = "none";
       discordLoginBtn.style.display = "inline";
       googleButtonContainer.style.display = "inline";
-      
+
       // Clear localStorage
       localStorage.removeItem('socialHubUser');
-      
+
       // Reset shared user object
       Object.keys(sharedUser).forEach(key => delete sharedUser[key]);
-      
+
       // For Google logout
       google.accounts.id.disableAutoSelect();
     }
@@ -747,7 +737,7 @@
         googleButtonContainer,
         { theme: "outline", size: "medium" }
       );
-      
+
       // Only prompt if user is not already logged in
       if (!localStorage.getItem('socialHubUser')) {
         google.accounts.id.prompt();
@@ -756,18 +746,17 @@
 
     function handleGoogleCredentialResponse(response) {
       const data = parseJwt(response.credential);
-      
+
       // Store user data
       sharedUser.name = data.name;
       sharedUser.email = data.email;
       sharedUser.picture = data.picture;
       sharedUser.provider = 'google';
-      
+
       // Save to localStorage
       localStorage.setItem('socialHubUser', JSON.stringify(sharedUser));
-      
+
       showProfilePic(sharedUser.picture);
-      showUsername(sharedUser.name); // Display username for Google login
       showLogout();
     }
 
@@ -779,14 +768,14 @@
     discordLoginBtn.addEventListener("click", () => {
       const clientId = "1372714920981823528";
       const redirectUri = encodeURIComponent("https://thesocialhub.vercel.app/TheSocialHub.html");
-      const discordUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=identify%20email%20guilds`;
+      const discordUrl = https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=identify%20email%20guilds;
       window.location.href = discordUrl;
     });
 
     // Discord Callback Handling (if redirected back)
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get("code");
-    
+
     if (code) {
       // Create the form data to send
       const formData = new FormData();
@@ -795,7 +784,7 @@
       formData.append('grant_type', 'authorization_code');
       formData.append('code', code);
       formData.append('redirect_uri', 'https://thesocialhub.vercel.app/TheSocialHub.html');
-      
+
       fetch('https://discord.com/api/oauth2/token', {
         method: 'POST',
         body: formData
@@ -804,11 +793,11 @@
       .then(data => {
         // Store the token for future use
         localStorage.setItem('discordToken', data.access_token);
-          
+
         // Get user data with the access token
         return fetch('https://discord.com/api/users/@me', {
           headers: {
-            Authorization: `Bearer ${data.access_token}`
+            Authorization: Bearer ${data.access_token}
           }
         });
       })
@@ -817,27 +806,26 @@
         sharedUser.name = userData.username;
         sharedUser.email = userData.email;
         sharedUser.provider = 'discord';
-        
+
         // Set avatar URL if it exists
         if (userData.avatar) {
-          sharedUser.picture = `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`;
+          sharedUser.picture = https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png;
         } else {
           sharedUser.picture = 'https://cdn.discordapp.com/embed/avatars/0.png'; // Default avatar
         }
-        
+
         // Save to localStorage
         localStorage.setItem('socialHubUser', JSON.stringify(sharedUser));
-        
+
         showProfilePic(sharedUser.picture);
-        showUsername(sharedUser.name); // Display username for Discord login
         showLogout();
-        
+
         // Remove the code from URL to prevent re-authentication on refresh
         window.history.replaceState({}, document.title, window.location.pathname);
       })
       .catch(err => {
         console.error("Discord login error:", err);
-        
+
         // If token exchange fails, remove code from URL
         window.history.replaceState({}, document.title, window.location.pathname);
       });
