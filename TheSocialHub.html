@@ -673,6 +673,7 @@
 <script>
     const sharedUser = {};
     const profilePic = document.getElementById("profile-pic");
+    const usernameDisplay = document.getElementById("username-display"); // Add username element reference
     const discordLoginBtn = document.getElementById("discord-login");
     const googleButtonContainer = document.getElementById("google-signin-button");
     const logoutBtn = document.getElementById("logout");
@@ -689,6 +690,7 @@
         const user = JSON.parse(userData);
         Object.assign(sharedUser, user);
         showProfilePic(user.picture);
+        showUsername(user.name); // Display username
         showLogout();
       }
     }
@@ -696,6 +698,12 @@
     function showProfilePic(url) {
       profilePic.src = url;
       profilePic.style.display = "block";
+    }
+
+    // Add function to display username
+    function showUsername(name) {
+      usernameDisplay.textContent = name;
+      usernameDisplay.style.display = "inline-block";
     }
 
     function showLogout() {
@@ -707,6 +715,8 @@
     function resetUI() {
       profilePic.src = "";
       profilePic.style.display = "none";
+      usernameDisplay.textContent = ""; // Clear username
+      usernameDisplay.style.display = "none"; // Hide username element
       logoutBtn.style.display = "none";
       discordLoginBtn.style.display = "inline";
       googleButtonContainer.style.display = "inline";
@@ -757,6 +767,7 @@
       localStorage.setItem('socialHubUser', JSON.stringify(sharedUser));
       
       showProfilePic(sharedUser.picture);
+      showUsername(sharedUser.name); // Display username for Google login
       showLogout();
     }
 
@@ -818,6 +829,7 @@
         localStorage.setItem('socialHubUser', JSON.stringify(sharedUser));
         
         showProfilePic(sharedUser.picture);
+        showUsername(sharedUser.name); // Display username for Discord login
         showLogout();
         
         // Remove the code from URL to prevent re-authentication on refresh
