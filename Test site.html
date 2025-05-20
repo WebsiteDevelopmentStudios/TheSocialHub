@@ -15,7 +15,7 @@
     }
     
     body {
-      background-color: #f3e5cb;
+      background: linear-gradient(135deg, #000 0%, #1a0a0a 50%, #000 100%);
       color: #000;
       font-family: Arial, sans-serif;
       line-height: 1.6;
@@ -26,14 +26,14 @@
     
     /* Header and branding */
     header {
-      background-color: #333;
-      color: #f3e5cb;
+      background-color: #000;
+      color: #ff4444;
       padding: 15px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 2px 10px rgba(255, 68, 68, 0.4);
     }
     
     .logo {
@@ -47,13 +47,13 @@
       font-size: 26px;
       flex-grow: 1;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-      color: #e6bc5c; /* Gold color similar to ghacks logo */
+      color: #ff4444; /* Red color matching the logo */
     }
     
     /* Main navigation */
     .main-navigation {
-      background-color: #222;
-      border-bottom: 2px solid #e6bc5c;
+      background-color: #000;
+      border-bottom: 2px solid #ff4444;
       width: 100%;
     }
     
@@ -69,7 +69,7 @@
     nav a,
     #google-signin-button,
     #logout {
-      color: #fff;
+      color: #ff4444;
       text-decoration: none;
       font-weight: 600;
       padding: 15px 18px;
@@ -87,7 +87,7 @@
       left: 50%;
       width: 0;
       height: 2px;
-      background-color: #e6bc5c;
+      background-color: #ff4444;
       transition: all 0.3s ease;
       transform: translateX(-50%);
     }
@@ -95,7 +95,10 @@
     nav a:hover,
     #google-signin-button:hover,
     #logout:hover {
-      background-color: #444;
+      background: linear-gradient(135deg, #ff4444 0%, #ff6666 100%);
+      color: #000;
+      border-radius: 6px;
+      box-shadow: 0 3px 8px rgba(255, 68, 68, 0.4);
     }
     
     nav a:hover:after,
@@ -106,7 +109,7 @@
     
     /* Highlight active section */
     nav a.active {
-      border-bottom: 2px solid #e6bc5c;
+      border-bottom: 2px solid #ff4444;
     }
     
     .profile-pic {
@@ -115,14 +118,15 @@
       border-radius: 50%;
       object-fit: cover;
       margin-left: 20px;
-      border: 2px solid #e6bc5c;
+      border: 2px solid #ff4444;
     }
     
     /* Secondary navigation bar */
     .secondary-navigation {
-      background-color: #2a2a2a;
+      background: linear-gradient(90deg, #111 0%, #2a0a0a 50%, #111 100%);
       width: 100%;
-      border-bottom: 1px solid #444;
+      border-bottom: 2px solid #ff4444;
+      box-shadow: 0 2px 8px rgba(255, 68, 68, 0.2);
     }
     
     .secondary-nav {
@@ -133,7 +137,7 @@
     }
     
     .secondary-nav a {
-      color: #ccc;
+      color: #ff4444;
       text-decoration: none;
       padding: 5px 15px;
       font-size: 14px;
@@ -141,72 +145,120 @@
     }
     
     .secondary-nav a:hover {
-      color: #e6bc5c;
+      color: #fff;
+      background: linear-gradient(135deg, #ff4444 0%, #ff6666 100%);
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(255, 68, 68, 0.3);
     }
     
     /* Content sections */
     .content-container {
-      background-color: #fff;
-      border: 1px solid #ddd;
+      background: linear-gradient(to bottom, #fff 0%, #ffe6e6 100%);
+      border: 2px solid #ff4444;
       margin: 20px auto;
       max-width: 1200px;
       width: 95%;
       padding: 20px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 15px rgba(255, 68, 68, 0.4), 0 0 25px rgba(255, 68, 68, 0.1);
+      border-radius: 8px;
     }
     
     section {
       margin-bottom: 40px;
       padding: 20px;
       background-color: #fff;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #ff4444;
     }
     
     section h2 {
-      color: #333;
+      color: #cc2222;
       margin-bottom: 15px;
       font-size: 22px;
       padding-bottom: 10px;
-      border-bottom: 1px solid #eee;
+      border-bottom: 2px solid #ff4444;
+      text-shadow: 1px 1px 2px rgba(255, 68, 68, 0.2);
     }
     
     section#contact {
-      background-color: #fff;
+      background: linear-gradient(135deg, #fff 0%, #ffe6e6 50%, #ffcccc 100%);
       margin: 20px auto;
       padding: 25px;
       max-width: 800px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
+      border: 2px solid #ff4444;
+      border-radius: 10px;
       text-align: center;
-      color: #333;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      color: #000;
+      box-shadow: 0 6px 20px rgba(255, 68, 68, 0.3), inset 0 1px 3px rgba(255, 68, 68, 0.1);
     }
     
     section#contact h2 {
-      color: #333;
+      color: #cc2222;
       margin-bottom: 15px;
       font-size: 22px;
-      border-bottom: 1px solid #eee;
+      border-bottom: 2px solid #ff4444;
       padding-bottom: 10px;
+      text-shadow: 1px 1px 2px rgba(255, 68, 68, 0.2);
     }
     
     .discord-btn {
       display: inline-block;
-      background-color: #7289DA; /* Discord color */
+      background: linear-gradient(135deg, #ff4444 0%, #ff2222 50%, #cc1111 100%);
       color: #fff;
       padding: 12px 20px;
-      border-radius: 4px;
+      border-radius: 8px;
       font-weight: 600;
       text-decoration: none;
       margin-top: 16px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      border: none;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
       cursor: pointer;
+      box-shadow: 0 4px 12px rgba(255, 68, 68, 0.3);
     }
     
     .discord-btn:hover {
-      background-color: #5f73bc;
-      transform: translateY(-2px);
+      background: linear-gradient(135deg, #cc3333 0%, #ff4444 50%, #ff6666 100%);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 68, 68, 0.5);
+      border: 2px solid #ff6666;
+    }
+
+    .learn-more-container {
+      text-align: center;
+      margin: 20px auto;
+      max-width: 1200px;
+      width: 95%;
+    }
+
+    .learn-more-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #cc2222 0%, #aa1111 50%, #881111 100%);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(204, 34, 34, 0.3);
+    }
+    
+    .learn-more-btn:hover {
+      background: linear-gradient(135deg, #aa1111 0%, #cc2222 50%, #ee3333 100%);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(204, 34, 34, 0.5);
+      border: 2px solid #ee3333;
+    }
+    
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #000 0%, #1a0a0a 50%, #000 100%);
+      color: #ff4444;
+      text-align: center;
+      padding: 20px;
+      margin-top: auto;
+      border-top: 3px solid #ff4444;
+      box-shadow: 0 -4px 15px rgba(255, 68, 68, 0.2);
     }
     
     /* Responsive design */
@@ -236,7 +288,7 @@
       .secondary-nav a {
         width: 100%;
         padding: 12px 15px;
-        border-bottom: 1px solid #444;
+        border-bottom: 1px solid #ff4444;
         text-align: left;
       }
       
@@ -277,7 +329,8 @@
         height: 50px;
       }
       
-      .discord-btn {
+      .discord-btn,
+      .learn-more-btn {
         width: 100%;
       }
     }
@@ -286,7 +339,7 @@
 <body>
   <header>
     <img
-      src="https://cdn.discordapp.com/attachments/1186219018542133309/1372697766106501251/872cbe94-6f10-48c0-9bfd-67b78e225540.png?ex=6827b7ea&is=6826666a&hm=b0b20d7b9acc62516b9a966beeda84ec99a234ee8f0c751b5005f4e1fcc52801&"
+      src="https://raw.githubusercontent.com/1000000overit/TheSocialHub/refs/heads/main/ezgif-7efefe6853d365.jpg"
       alt="The Social Hub Logo"
       class="logo"
     />
@@ -297,8 +350,8 @@
   <div class="main-navigation">
     <nav id="navbar">
       <a href="#contact">Contact</a>
+      <a href="AboutMe.html">About Me</a>
       <a href="Product.html">Products</a>
-      <a href="https://thesocialhub.vercel.app/TheSocialHub.html">Terminate Login</a>
     </nav>
   </div>
   
@@ -314,15 +367,20 @@
     <section id="contact">
       <h2>Contact Me</h2>
       <p>Join our community on Discord for support, questions, or collaboration!</p>
-      <a
-        class="discord-btn"
-        href="https://discord.gg/NPmDNNKtw6"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a class="discord-btn"
+         href="https://discord.gg/NPmDNNKtw6"
+         target="_blank"
+         rel="noopener noreferrer">
         Join Our Discord Server
       </a>
     </section>
+  </div>
+
+  <div class="learn-more-container">
+    <a class="learn-more-btn"
+       href="AboutMe.html">
+      Learn More
+    </a>
   </div>
 
   <script>
@@ -486,5 +544,10 @@
       });
     }
   </script>
+  <footer>
+            <p>© 2025 The Social Hub. All rights reserved.</p>
+  </footer>
 </body>
 </html>
+
+DONT CHANGE ANYTHING, add a few more sections
