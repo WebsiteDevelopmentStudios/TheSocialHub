@@ -261,6 +261,255 @@
       box-shadow: 0 -4px 15px rgba(255, 68, 68, 0.2);
     }
     
+    /* Featured content section */
+    .featured-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 20px 0;
+    }
+    
+    .feature-card {
+      background: linear-gradient(135deg, #fff 0%, #fff2f2 100%);
+      width: calc(33.33% - 20px);
+      margin-bottom: 30px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(255, 68, 68, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #ffcccc;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(255, 68, 68, 0.4);
+    }
+    
+    .feature-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 2px solid #ffcccc;
+    }
+    
+    .feature-content {
+      padding: 15px;
+    }
+    
+    .feature-content h3 {
+      color: #cc2222;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+    
+    .feature-content p {
+      color: #333;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+    
+    .feature-btn {
+      display: inline-block;
+      background: #ff4444;
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .feature-btn:hover {
+      background: #cc2222;
+      transform: translateY(-2px);
+    }
+    
+    /* User welcome section */
+    .user-welcome {
+      display: none;
+      background: linear-gradient(135deg, #fff 0%, #ffe6e6 50%, #ffcccc 100%);
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 800px;
+      border: 2px solid #ff4444;
+      border-radius: 10px;
+      text-align: center;
+      color: #000;
+      box-shadow: 0 6px 20px rgba(255, 68, 68, 0.3), inset 0 1px 3px rgba(255, 68, 68, 0.1);
+    }
+    
+    .user-welcome h2 {
+      color: #cc2222;
+      margin-bottom: 15px;
+      font-size: 22px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #ff4444;
+    }
+    
+    /* Newsletter signup */
+    .newsletter {
+      background: linear-gradient(135deg, #222 0%, #2a0a0a 100%);
+      padding: 30px;
+      margin: 20px auto;
+      max-width: 800px;
+      border-radius: 10px;
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      border: 2px solid #ff4444;
+    }
+    
+    .newsletter h3 {
+      color: #ff4444;
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+    
+    .newsletter p {
+      margin-bottom: 20px;
+      color: #ddd;
+    }
+    
+    .newsletter-form {
+      display: flex;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
+    .newsletter-input {
+      flex-grow: 1;
+      padding: 10px 15px;
+      border: 2px solid #ff4444;
+      border-radius: 6px 0 0 6px;
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 16px;
+    }
+    
+    .newsletter-btn {
+      background: linear-gradient(135deg, #ff4444 0%, #cc2222 100%);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 0 6px 6px 0;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .newsletter-btn:hover {
+      background: linear-gradient(135deg, #cc2222 0%, #ff4444 100%);
+    }
+    
+    /* Testimonials */
+    .testimonials {
+      padding: 30px 0;
+      background: rgba(255, 255, 255, 0.05);
+      margin-top: 30px;
+    }
+    
+    .testimonial-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .testimonial-container h2 {
+      color: #ff4444;
+      margin-bottom: 30px;
+      font-size: 24px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    
+    .testimonials-slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      margin-bottom: 20px;
+    }
+    
+    .testimonial-card {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      background: linear-gradient(135deg, #fff 0%, #fff2f2 100%);
+      margin: 0 10px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(255, 68, 68, 0.2);
+      min-width: 280px;
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    
+    .testimonial-author {
+      font-weight: 600;
+      color: #cc2222;
+    }
+    
+    /* Modal for login confirmation */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .modal-content {
+      background: linear-gradient(135deg, #fff 0%, #ffe6e6 100%);
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      border: 2px solid #ff4444;
+      box-shadow: 0 4px 20px rgba(255, 68, 68, 0.6);
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #cc2222;
+    }
+    
+    .modal h3 {
+      color: #cc2222;
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+    
+    .modal-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff4444 0%, #cc2222 100%);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 6px;
+      margin-top: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .modal-btn:hover {
+      background: linear-gradient(135deg, #cc2222 0%, #ff4444 100%);
+      transform: translateY(-3px);
+    }
+    
     /* Responsive design */
     @media (max-width: 768px) {
       header {
@@ -318,6 +567,26 @@
         margin: 15px auto;
         width: 95%;
       }
+      
+      .feature-card {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+      
+      .newsletter-form {
+        flex-direction: column;
+      }
+      
+      .newsletter-input {
+        width: 100%;
+        margin-bottom: 10px;
+        border-radius: 6px;
+      }
+      
+      .newsletter-btn {
+        width: 100%;
+        border-radius: 6px;
+      }
     }
     
     @media (max-width: 400px) {
@@ -349,9 +618,11 @@
   
   <div class="main-navigation">
     <nav id="navbar">
+      <a href="index.html" class="active">Home</a>
       <a href="#contact">Contact</a>
       <a href="AboutMe.html">About Me</a>
       <a href="Product.html">Products</a>
+      <a href="#" id="community-link">Community</a>
     </nav>
   </div>
   
@@ -363,7 +634,44 @@
     </div>
   </div>
 
+  <!-- User welcome message -->
+  <div id="user-welcome" class="user-welcome">
+    <h2>Welcome back, <span id="username">User</span>!</h2>
+    <p>We're glad to see you again. Check out our latest updates and connect with our community.</p>
+  </div>
+
+  <!-- Featured content section -->
   <div class="content-container">
+    <section>
+      <h2>Featured Content</h2>
+      <div class="featured-content">
+        <div class="feature-card">
+          <img src="/api/placeholder/400/320" alt="Community Events" class="feature-img" />
+          <div class="feature-content">
+            <h3>Community Events</h3>
+            <p>Join our upcoming virtual meetups and collaborative sessions with fellow members.</p>
+            <a href="#" class="feature-btn">Learn More</a>
+          </div>
+        </div>
+        <div class="feature-card">
+          <img src="/api/placeholder/400/320" alt="Resource Library" class="feature-img" />
+          <div class="feature-content">
+            <h3>Resource Library</h3>
+            <p>Access our exclusive collection of guides, templates and educational materials.</p>
+            <a href="#" class="feature-btn">Browse Resources</a>
+          </div>
+        </div>
+        <div class="feature-card">
+          <img src="/api/placeholder/400/320" alt="Member Spotlight" class="feature-img" />
+          <div class="feature-content">
+            <h3>Member Spotlight</h3>
+            <p>Discover amazing projects and contributions from our community members.</p>
+            <a href="#" class="feature-btn">View Spotlights</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="contact">
       <h2>Contact Me</h2>
       <p>Join our community on Discord for support, questions, or collaboration!</p>
@@ -378,6 +686,37 @@
     </section>
   </div>
 
+  <!-- Newsletter signup -->
+  <div class="newsletter">
+    <h3>Stay Updated</h3>
+    <p>Subscribe to our newsletter for the latest updates, events, and community news.</p>
+    <form class="newsletter-form" id="newsletter-form">
+      <input type="email" class="newsletter-input" placeholder="Your email address" required />
+      <button type="submit" class="newsletter-btn">Subscribe</button>
+    </form>
+  </div>
+
+  <!-- Testimonials -->
+  <div class="testimonials">
+    <div class="testimonial-container">
+      <h2>What Our Community Says</h2>
+      <div class="testimonials-slider">
+        <div class="testimonial-card">
+          <p class="testimonial-text">"The Social Hub has been an amazing platform to connect with like-minded individuals and grow my network. The resources are invaluable!"</p>
+          <p class="testimonial-author">- Alex Johnson</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">"I've found great collaborators and friends through this community. The support and feedback I've received has helped me improve tremendously."</p>
+          <p class="testimonial-author">- Sarah Williams</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">"The events organized by The Social Hub are always enlightening and fun. It's my go-to place for networking and learning."</p>
+          <p class="testimonial-author">- Michael Chen</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="learn-more-container">
     <a
       class="learn-more-btn"
@@ -387,169 +726,34 @@
     </a>
   </div>
 
+  <!-- Login confirmation modal -->
+  <div id="login-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h3>Login Successful!</h3>
+      <p id="modal-message">Welcome to The Social Hub!</p>
+      <a href="#" class="modal-btn" id="modal-close-btn">Continue</a>
+    </div>
+  </div>
+
   <script>
     const sharedUser = {};
     const profilePic = document.getElementById("profile-pic");
     const discordLoginBtn = document.getElementById("discord-login");
     const googleButtonContainer = document.getElementById("google-signin-button");
     const logoutBtn = document.getElementById("logout");
+    const userWelcome = document.getElementById("user-welcome");
+    const usernameEl = document.getElementById("username");
+    const loginModal = document.getElementById("login-modal");
+    const modalMessage = document.getElementById("modal-message");
+    const modalCloseBtn = document.getElementById("modal-close-btn");
+    const closeModalBtn = document.querySelector(".close-modal");
+    const newsletterForm = document.getElementById("newsletter-form");
 
     // Check if user is already logged in when page loads
     document.addEventListener('DOMContentLoaded', function() {
       checkLoginStatus();
+      
+      // Set active navigation link
+      setActiveNavLink();
     });
-
-    function checkLoginStatus() {
-      const userData = localStorage.getItem('socialHubUser');
-      
-      if (userData) {
-        const user = JSON.parse(userData);
-        Object.assign(sharedUser, user);
-        showProfilePic(user.picture);
-        showLogout();
-      }
-    }
-
-    function showProfilePic(url) {
-      profilePic.src = url;
-      profilePic.style.display = "block";
-    }
-
-    function showLogout() {
-      logoutBtn.style.display = "inline";
-      discordLoginBtn.style.display = "none";
-      googleButtonContainer.style.display = "none";
-    }
-
-    function resetUI() {
-      profilePic.src = "";
-      profilePic.style.display = "none";
-      logoutBtn.style.display = "none";
-      discordLoginBtn.style.display = "inline";
-      googleButtonContainer.style.display = "inline";
-      
-      // Clear localStorage
-      localStorage.removeItem('socialHubUser');
-      
-      // Reset shared user object
-      Object.keys(sharedUser).forEach(key => delete sharedUser[key]);
-      
-      // For Google logout
-      google.accounts.id.disableAutoSelect();
-    }
-
-    logoutBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      resetUI();
-      // Don't reload the page to prevent the glitch
-    });
-
-    // Google Login
-    window.onload = () => {
-      google.accounts.id.initialize({
-        client_id: "202303647205-hkoael6jehqr88t3ch2aiho65brt9ncp.apps.googleusercontent.com",
-        callback: handleGoogleCredentialResponse
-      });
-      google.accounts.id.renderButton(
-        googleButtonContainer,
-        { theme: "outline", size: "medium" }
-      );
-      
-      // Only prompt if user is not already logged in
-      if (!localStorage.getItem('socialHubUser')) {
-        google.accounts.id.prompt();
-      }
-    };
-
-    function handleGoogleCredentialResponse(response) {
-      const data = parseJwt(response.credential);
-      
-      // Store user data
-      sharedUser.name = data.name;
-      sharedUser.email = data.email;
-      sharedUser.picture = data.picture;
-      sharedUser.provider = 'google';
-      
-      // Save to localStorage
-      localStorage.setItem('socialHubUser', JSON.stringify(sharedUser));
-      
-      showProfilePic(sharedUser.picture);
-      showLogout();
-    }
-
-    function parseJwt(token) {
-      return JSON.parse(atob(token.split('.')[1]));
-    }
-
-    // Discord Login
-    discordLoginBtn.addEventListener("click", () => {
-      const clientId = "1372714920981823528";
-      const redirectUri = encodeURIComponent("https://thesocialhub.vercel.app/TheSocialHub.html");
-      const discordUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=identify%20email%20guilds`;
-      window.location.href = discordUrl;
-    });
-
-    // Discord Callback Handling (if redirected back)
-    const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get("code");
-    
-    if (code) {
-      // Create the form data to send
-      const formData = new FormData();
-      formData.append('client_id', '1372714920981823528');
-      formData.append('client_secret', 'CAq_mGF6mkA5CIGMtDQjsK8EysywxkpI');
-      formData.append('grant_type', 'authorization_code');
-      formData.append('code', code);
-      formData.append('redirect_uri', 'https://thesocialhub.vercel.app/TheSocialHub.html');
-      
-      fetch('https://discord.com/api/oauth2/token', {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => response.json())
-      .then(data => {
-        // Store the token for future use
-        localStorage.setItem('discordToken', data.access_token);
-          
-        // Get user data with the access token
-        return fetch('https://discord.com/api/users/@me', {
-          headers: {
-            Authorization: `Bearer ${data.access_token}`
-          }
-        });
-      })
-      .then(response => response.json())
-      .then(userData => {
-        sharedUser.name = userData.username;
-        sharedUser.email = userData.email;
-        sharedUser.provider = 'discord';
-        
-        // Set avatar URL if it exists
-        if (userData.avatar) {
-          sharedUser.picture = `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`;
-        } else {
-          sharedUser.picture = 'https://cdn.discordapp.com/embed/avatars/0.png'; // Default avatar
-        }
-        
-        // Save to localStorage
-        localStorage.setItem('socialHubUser', JSON.stringify(sharedUser));
-        
-        showProfilePic(sharedUser.picture);
-        showLogout();
-        
-        // Remove the code from URL to prevent re-authentication on refresh
-        window.history.replaceState({}, document.title, window.location.pathname);
-      })
-      .catch(err => {
-        console.error("Discord login error:", err);
-        
-        // If token exchange fails, remove code from URL
-        window.history.replaceState({}, document.title, window.location.pathname);
-      });
-    }
-  </script>
-  <footer>
-            <p>© 2025 The Social Hub. All rights reserved.</p>
-  </footer>
-</body>
-</html>
