@@ -5,60 +5,340 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Products - The Social Hub</title>
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #001a00;
-      color: #fff;
+      background: linear-gradient(135deg, #001122 0%, #002244 50%, #003366 100%);
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
+
     header {
-      background-color: #002d00;
-      color: #44ff44;
-      padding: 20px;
+      background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #2563eb 100%);
+      color: #ffffff;
+      padding: 30px 20px;
       text-align: center;
-      border-bottom: 1px solid #33cc33;
+      border-bottom: 4px solid #3b82f6;
+      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+      position: relative;
+      overflow: hidden;
     }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      background: linear-gradient(45deg, #e0f2fe, #bfdbfe, #93c5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+      z-index: 1;
+    }
+
     .products-section {
-      padding: 40px 20px;
+      padding: 50px 20px;
       text-align: center;
+      flex: 1;
+      background: linear-gradient(180deg, rgba(59, 130, 246, 0.05) 0%, rgba(147, 197, 253, 0.02) 100%);
     }
+
+    .section-title {
+      font-size: 1.8rem;
+      color: #60a5fa;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 2px rgba(96, 165, 250, 0.3);
+    }
+
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
       padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
+
     .product {
-      background-color: #002d00;
-      border: 1px solid #44ff44;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0, 255, 0, 0.3);
+      background: linear-gradient(135deg, #f0f9ff 0%, #dbeafe 50%, #bfdbfe 100%);
+      border: 2px solid #93c5fd;
+      border-radius: 15px;
+      padding: 30px 25px;
+      box-shadow: 0 10px 30px rgba(147, 197, 253, 0.3);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      color: #1e293b;
     }
+
+    .product::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd, #60a5fa, #3b82f6);
+      background-size: 200% 100%;
+      animation: gradient-flow 3s ease-in-out infinite;
+    }
+
+    @keyframes gradient-flow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .product:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(59, 130, 246, 0.4);
+      border-color: #3b82f6;
+    }
+
+    .product:hover::before {
+      height: 6px;
+      animation-duration: 1s;
+    }
+
     .product h3 {
       margin-top: 0;
-      color: #44ff44;
+      margin-bottom: 15px;
+      color: #1e40af;
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-shadow: 1px 1px 2px rgba(30, 64, 175, 0.2);
+      background: linear-gradient(45deg, #1e40af, #2563eb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
+
     .product p {
-      color: #ccffcc;
+      color: #475569;
+      margin-bottom: 25px;
+      line-height: 1.6;
+      font-size: 1rem;
     }
-    .buy-button {
-      margin-top: 10px;
+
+    .product-status {
       display: inline-block;
-      background-color: #44ff44;
-      color: #000;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 25px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .status-available {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      color: #166534;
+      border: 1px solid #86efac;
+    }
+
+    .status-coming-soon {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      color: #92400e;
+      border: 1px solid #fbbf24;
+    }
+
+    .buy-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%);
+      color: #ffffff;
+      padding: 14px 28px;
+      border: 2px solid transparent;
+      border-radius: 30px;
       text-decoration: none;
       font-size: 16px;
-      font-weight: bold;
-      transition: background-color 0.3s, transform 0.2s;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
     }
+
+    .buy-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .buy-button:hover::before {
+      left: 100%;
+    }
+
     .buy-button:hover {
-      background-color: #33dd33;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0, 255, 0, 0.2);
+      background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #3b82f6 100%);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(29, 78, 216, 0.4);
+      border-color: #93c5fd;
+    }
+
+    .buy-button:active {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 25px rgba(29, 78, 216, 0.3);
+    }
+
+    .back-button {
+      margin-top: 50px;
+      background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #3b82f6 100%);
+      padding: 16px 32px;
+      font-size: 18px;
+      border-radius: 35px;
+    }
+
+    .back-button:hover {
+      background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 50%, #2563eb 100%);
+    }
+
+    /* Special styling for specific products */
+    .product.minecraft {
+      background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);
+      border-color: #0ea5e9;
+    }
+
+    .product.discord-bot {
+      background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 50%, #c4b5fd 100%);
+      border-color: #8b5cf6;
+    }
+
+    .product.nitro {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #facc15 100%);
+      border-color: #eab308;
+    }
+
+    .product.discord-bot h3 {
+      background: linear-gradient(45deg, #7c3aed, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .product.nitro h3 {
+      background: linear-gradient(45deg, #d97706, #eab308);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    footer {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+      color: #94a3b8;
+      text-align: center;
+      padding: 25px 20px;
+      border-top: 3px solid #3b82f6;
+      box-shadow: 0 -6px 20px rgba(59, 130, 246, 0.2);
+      margin-top: auto;
+    }
+
+    footer p {
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      header {
+        padding: 25px 15px;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .products-section {
+        padding: 30px 15px;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 15px;
+      }
+
+      .product {
+        padding: 25px 20px;
+      }
+
+      .buy-button {
+        padding: 12px 24px;
+        font-size: 15px;
+      }
+
+      .back-button {
+        padding: 14px 28px;
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      .product {
+        padding: 20px 15px;
+      }
+
+      .buy-button {
+        width: 100%;
+        padding: 12px 20px;
+      }
+
+      .back-button {
+        width: 80%;
+        padding: 12px 20px;
+        font-size: 15px;
+      }
+    }
+
+    /* Ocean wave decoration */
+    .ocean-wave {
+      background: linear-gradient(45deg, 
+        #0ea5e9 0%, 
+        #0284c7 25%, 
+        #0369a1 50%, 
+        #075985 75%, 
+        #0c4a6e 100%);
+      height: 4px;
+      width: 100%;
+      margin: 30px 0;
+      border-radius: 2px;
+      animation: wave 3s ease-in-out infinite;
+    }
+
+    @keyframes wave {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
     }
   </style>
 </head>
@@ -68,29 +348,40 @@
   </header>
 
   <section class="products-section">
+    <h2 class="section-title">Discover Our Amazing Offerings</h2>
+    <div class="ocean-wave"></div>
+    
     <div class="product-grid">
-      <div class="product">
-        <h3>Minecraft stuff</h3>
-        <p>Minecraft files</p>
-        <a href="Downloads.html" class="buy-button">Show more</a>
+      <div class="product minecraft">
+        <div class="product-status status-available">Available</div>
+        <h3>Minecraft Stuff</h3>
+        <p>Explore our collection of premium Minecraft files, mods, and resources to enhance your gaming experience.</p>
+        <a href="Downloads.html" class="buy-button">Show More</a>
       </div>
-      <div class="product">
-        <h3>Free bot</h3>
-        <p>Get A Free Dicord bot</p>
-        <a href="Checkout.html" class="buy-button">Buy Now</a>
+      
+      <div class="product discord-bot">
+        <div class="product-status status-available">Free</div>
+        <h3>Free Discord Bot</h3>
+        <p>Get your own custom Discord bot absolutely free! Perfect for managing your server and engaging with your community.</p>
+        <a href="Checkout.html" class="buy-button">Get Free Bot</a>
       </div>
-      <div class="product">
+      
+      <div class="product nitro">
+        <div class="product-status status-coming-soon">Coming Soon</div>
         <h3>Free Nitro</h3>
-        <p>Coming soon</p>
-        <a href="Checkout.html" class="buy-button">Buy Now</a>
+        <p>Discord Nitro benefits coming soon! Stay tuned for exciting updates and premium features.</p>
+        <a href="Checkout.html" class="buy-button">Learn More</a>
       </div>
     </div>
 
+    <div class="ocean-wave"></div>
+    
     <!-- Back button -->
-    <a href="TheSocialHub.html" class="buy-button" style="margin-top: 40px;">← Back</a>
+    <a href="TheSocialHub.html" class="buy-button back-button">← Back to Home</a>
   </section>
+  
   <footer>
-            <p>© 2025 The Social Hub. All rights reserved.</p>
+    <p>© 2025 The Social Hub. All rights reserved. | Giving the best first experience.</p>
   </footer>
 </body>
 </html>
