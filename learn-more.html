@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn more - The Social Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #87CEEB 0%, #4682B4 50%, #1E90FF 100%);
+            min-height: 100vh;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            background: #ffffff;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #2E86AB;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .floating-text {
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        .floating-text:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .floating-text:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .content-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .problem-title {
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .problem-description {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .impact-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .impact-list li {
+            background: rgba(46, 134, 171, 0.3);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #FFD700;
+            position: relative;
+        }
+
+        .impact-list li::before {
+            content: "⚠️";
+            margin-right: 10px;
+        }
+
+        .floating-warning {
+            position: absolute;
+            animation: floatSlow 4s ease-in-out infinite;
+            opacity: 0.7;
+            font-size: 2rem;
+        }
+
+        .floating-warning:nth-child(1) {
+            top: 10%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-warning:nth-child(2) {
+            top: 30%;
+            left: 5%;
+            animation-delay: 1s;
+        }
+
+        .floating-warning:nth-child(3) {
+            bottom: 20%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        @keyframes floatSlow {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-15px) rotate(5deg);
+            }
+        }
+
+        .solution-hint {
+            background: linear-gradient(45deg, #2E86AB, #4682B4);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+            
+            .floating-warning {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-warning">🔧</div>
+    <div class="floating-warning">⚡</div>
+    <div class="floating-warning">🚨</div>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo">TSH</div>
+            <h1>
+                <span class="floating-text">Learn</span> 
+                <span class="floating-text">More</span> 
+                <span class="floating-text">!</span>
+                <span class="floating-tedt">!</span>
+                <span class="floating-tedt">!</span>
+            </h1>
+        </div>
+
+        <div class="content-section">
+            <h2 class="problem-title floating-text">🔍 Reasons why some of our products say "learn more"🔎</h2>
+            <p class="problem-description">
+                True, we do have a few errors but we are fixing them 
+            </p>
+            
+            <ul class="impact-list">
+                <li><strong>Not ready:</strong> The product might not be ready yet</li>
+                <li><strong>Staff:</strong> We dont have alot of staff so its a bit harder to stay organized</li>
+                <li><strong>Mobile Responsiveness:</strong> Coding takes time on mobile</li>
+                <li><strong>Security Vulnerabilities:</strong> We are fixing Security bugs and are busy</li>
+                <li><strong>User Interface Bugs:</strong> Several UI elements are not displaying correctly across different browsers</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2 class="problem-title">📊 The Good news</h2>
+            <p class="problem-description">
+                You heard some bad news, now its time for good news:
+            </p>
+            <ul class="impact-list">
+                <li>We are gonna add new products</li>
+                <li>New updates to the minecraft server are coming</li>
+                <li>We are adding new ways to login</li>
+                <li>Popularity is increasing</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2 class="problem-title floating-text">💈Updates in the future💈</h2>
+            <p class="problem-description">
+                BETTER LAYOUT, AWSOME PRODUCTS, MORE ACCESS.
+            </p>
+            
+            <div class="solution-hint pulse">
+                <strong>We appreciate your patience as we work to make The Social Hub better than ever!</strong>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2025 The Social Hub - Working Hard to Improve Your Experience</p>
+        </div>
+    </div>
+</body>
+</html>
