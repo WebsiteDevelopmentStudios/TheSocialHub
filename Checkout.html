@@ -8,15 +8,17 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background-color: #001a00;
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
       color: #fff;
+      min-height: 100vh;
     }
     header {
-      background-color: #003d00;
-      color: #44ff44;
+      background: linear-gradient(145deg, #1e40af, #2563eb);
+      color: #e0f2fe;
       padding: 20px;
       text-align: center;
       position: relative;
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
     }
     .main-navigation {
       position: absolute;
@@ -25,71 +27,134 @@
       transform: translateY(-50%);
     }
     #navbar a {
-      color: #44ff44;
+      color: #ffffff;
       text-decoration: none;
       font-weight: bold;
       padding: 8px 16px;
-      background-color: #002d00;
+      background: linear-gradient(145deg, #1d4ed8, #2563eb);
+      border: 2px solid #3b82f6;
       border-radius: 8px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
+      transition: all 0.3s ease;
       display: inline-block;
+      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
     }
     #navbar a:hover {
-      background-color: #004d00;
+      background: linear-gradient(145deg, #2563eb, #3b82f6);
       transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.6);
+      border-color: #60a5fa;
     }
     .checkout-section, .contact-section {
       max-width: 600px;
       margin: 40px auto;
-      background-color: #002d00;
+      background: linear-gradient(145deg, #1e40af, #1d4ed8);
       padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 255, 0, 0.4);
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
       color: #fff;
-      border: 1px solid #44ff44;
+      border: 2px solid #3b82f6;
+      position: relative;
+      overflow: hidden;
+    }
+    .checkout-section::before, .contact-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #60a5fa, #3b82f6, #60a5fa);
+      animation: shimmer 2s infinite;
+    }
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
     }
     label {
       display: block;
       margin-top: 15px;
       font-weight: bold;
-      color: #44ff44;
+      color: #bfdbfe;
     }
     input, select, textarea {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       margin-top: 5px;
-      border: 1px solid #116611;
-      border-radius: 5px;
+      border: 2px solid #3b82f6;
+      border-radius: 8px;
       box-sizing: border-box;
       font-size: 16px;
-      background-color: #003d00;
+      background: linear-gradient(145deg, #1d4ed8, #1e40af);
       color: #fff;
       resize: vertical;
+      transition: all 0.3s ease;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: #60a5fa;
+      box-shadow: 0 0 10px rgba(96, 165, 250, 0.4);
+      outline: none;
     }
     input::placeholder {
-      color: #88cc88;
+      color: #93c5fd;
     }
     .checkout-button, .send-button {
       margin-top: 25px;
       width: 100%;
       padding: 15px;
-      background-color: #44ff44;
-      color: #000;
+      background: linear-gradient(145deg, #3b82f6, #60a5fa);
+      color: #ffffff;
       font-size: 16px;
       font-weight: bold;
-      border: none;
+      border: 2px solid #60a5fa;
       border-radius: 25px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .checkout-button::before, .send-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+    .checkout-button:hover::before, .send-button:hover::before {
+      left: 100%;
     }
     .checkout-button:hover, .send-button:hover {
-      background-color: #33dd33;
+      background: linear-gradient(145deg, #60a5fa, #93c5fd);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+      border-color: #93c5fd;
+    }
+    .checkout-button:active, .send-button:active {
+      transform: translateY(0);
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
     }
     #checkout-form, #contact-form {
       margin-top: 10px;
     }
     h1 {
-      color: #44ff44;
+      color: #e0f2fe;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+    footer {
+      text-align: center;
+      color: #bfdbfe;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 14px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     }
   </style>
 </head>
@@ -140,7 +205,7 @@
     </form>
   </section>
   <footer>
-            <p>© 2025 The Social Hub. All rights reserved.</p>
+    <p>© 2025 The Social Hub. All rights reserved.</p>
   </footer>
 </body>
 </html>
