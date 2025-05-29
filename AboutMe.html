@@ -6,16 +6,29 @@
     <title>About Me - The Social Hub</title>
     <link rel="icon" type="image/png" href="favicon.ico">
     <meta name="description" content="The Social Hub - Your one-stop destination for amazing products and social connections">
-    <meta name="theme-color" content="#3b82f6">
+    <meta name="theme-color" content="#dc2626">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
-            color: #e0f2fe;
+            background: radial-gradient(ellipse at center, #1a1a1a 0%, #000000 70%, #0d0d0d 100%);
+            color: #fecaca;
             min-height: 100vh;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.03) 49%, rgba(255, 255, 255, 0.03) 51%, transparent 52%);
+            pointer-events: none;
+            z-index: -1;
         }
         
         .container {
@@ -39,17 +52,17 @@
             font-weight: 500;
             transition: all 0.3s ease;
             padding: 8px 16px;
-            border: 2px solid #3b82f6;
+            border: 2px solid #dc2626;
             border-radius: 50px;
-            background: linear-gradient(145deg, #1d4ed8, #2563eb);
-            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+            background: linear-gradient(145deg, #991b1b, #b91c1c);
+            box-shadow: 0 2px 8px rgba(220, 38, 38, 0.4);
         }
         
         .back-button:hover {
-            background: linear-gradient(145deg, #2563eb, #3b82f6);
+            background: linear-gradient(145deg, #b91c1c, #dc2626);
             transform: translateX(-5px);
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.6);
-            border-color: #60a5fa;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.6);
+            border-color: #ef4444;
         }
         
         .back-button svg {
@@ -58,7 +71,7 @@
         
         h1 {
             font-size: 2.5rem;
-            color: #e0f2fe;
+            color: #fecaca;
             margin-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -73,7 +86,7 @@
         
         .tagline {
             font-size: 1.2rem;
-            color: #bfdbfe;
+            color: #fca5a5;
             margin-bottom: 30px;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
@@ -85,11 +98,11 @@
         }
         
         .section {
-            background: linear-gradient(145deg, #1e40af, #1d4ed8);
+            background: linear-gradient(145deg, #7f1d1d, #991b1b);
             border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
-            border: 2px solid #3b82f6;
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+            border: 2px solid #dc2626;
             position: relative;
             overflow: hidden;
         }
@@ -101,7 +114,7 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, #60a5fa, #3b82f6, #60a5fa);
+            background: linear-gradient(90deg, #ef4444, #dc2626, #ef4444);
             animation: shimmer 2s infinite;
         }
         
@@ -111,15 +124,15 @@
         }
         
         .section h2 {
-            color: #e0f2fe;
+            color: #fecaca;
             margin-top: 0;
-            border-bottom: 2px solid #3b82f6;
+            border-bottom: 2px solid #dc2626;
             padding-bottom: 15px;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
         
         .section ul {
-            color: #bfdbfe;
+            color: #fca5a5;
         }
         
         .section li {
@@ -127,14 +140,14 @@
         }
         
         .featured-box {
-            background: linear-gradient(145deg, #1d4ed8, #1e40af);
-            color: #e0f2fe;
+            background: linear-gradient(145deg, #991b1b, #7f1d1d);
+            color: #fecaca;
             padding: 30px;
             border-radius: 15px;
             text-align: center;
             margin: 40px 0;
-            border: 2px solid #60a5fa;
-            box-shadow: 0 8px 25px rgba(96, 165, 250, 0.4);
+            border: 2px solid #ef4444;
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
             position: relative;
             overflow: hidden;
         }
@@ -146,20 +159,20 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, #93c5fd, #60a5fa, #93c5fd);
+            background: linear-gradient(90deg, #f87171, #ef4444, #f87171);
             animation: shimmer 2s infinite;
         }
         
         .featured-box h2 {
-            color: #e0f2fe;
-            border-bottom: 2px solid #3b82f6;
+            color: #fecaca;
+            border-bottom: 2px solid #dc2626;
             padding-bottom: 15px;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
         
         .cta-button {
             display: inline-block;
-            background: linear-gradient(145deg, #3b82f6, #60a5fa);
+            background: linear-gradient(145deg, #dc2626, #ef4444);
             color: #ffffff;
             padding: 12px 30px;
             border-radius: 50px;
@@ -167,8 +180,8 @@
             font-weight: bold;
             margin-top: 20px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
-            border: 2px solid #60a5fa;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+            border: 2px solid #ef4444;
             position: relative;
             overflow: hidden;
         }
@@ -189,16 +202,16 @@
         }
         
         .cta-button:hover {
-            background: linear-gradient(145deg, #60a5fa, #93c5fd);
+            background: linear-gradient(145deg, #ef4444, #f87171);
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
-            border-color: #93c5fd;
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.6);
+            border-color: #f87171;
         }
         
         .discord-button {
             display: inline-flex;
             align-items: center;
-            background: linear-gradient(145deg, #3b82f6, #60a5fa);
+            background: linear-gradient(145deg, #dc2626, #ef4444);
             color: #ffffff;
             padding: 12px 30px;
             border-radius: 50px;
@@ -206,8 +219,8 @@
             font-weight: bold;
             margin-top: 20px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
-            border: 2px solid #60a5fa;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+            border: 2px solid #ef4444;
             position: relative;
             overflow: hidden;
         }
@@ -228,10 +241,10 @@
         }
         
         .discord-button:hover {
-            background: linear-gradient(145deg, #60a5fa, #93c5fd);
+            background: linear-gradient(145deg, #ef4444, #f87171);
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
-            border-color: #93c5fd;
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.6);
+            border-color: #f87171;
         }
         
         .discord-button svg {
@@ -241,7 +254,7 @@
         footer {
             text-align: center;
             margin-top: 50px;
-            color: #bfdbfe;
+            color: #fca5a5;
             font-size: 0.9rem;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
