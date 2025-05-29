@@ -8,17 +8,29 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+      background: radial-gradient(ellipse at center, #1a1a1a 0%, #000000 70%, #0d0d0d 100%);
       color: #fff;
       min-height: 100vh;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.03) 49%, rgba(255, 255, 255, 0.03) 51%, transparent 52%);
+      pointer-events: none;
+      z-index: -1;
     }
     header {
-      background: linear-gradient(145deg, #1e40af, #2563eb);
-      color: #e0f2fe;
+      background: linear-gradient(145deg, #7f1d1d, #991b1b);
+      color: #fecaca;
       padding: 20px;
       text-align: center;
       position: relative;
-      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+      box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
     }
     .main-navigation {
       position: absolute;
@@ -31,28 +43,28 @@
       text-decoration: none;
       font-weight: bold;
       padding: 8px 16px;
-      background: linear-gradient(145deg, #1d4ed8, #2563eb);
-      border: 2px solid #3b82f6;
+      background: linear-gradient(145deg, #991b1b, #b91c1c);
+      border: 2px solid #dc2626;
       border-radius: 8px;
       transition: all 0.3s ease;
       display: inline-block;
-      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+      box-shadow: 0 2px 8px rgba(220, 38, 38, 0.4);
     }
     #navbar a:hover {
-      background: linear-gradient(145deg, #2563eb, #3b82f6);
+      background: linear-gradient(145deg, #b91c1c, #dc2626);
       transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.6);
-      border-color: #60a5fa;
+      box-shadow: 0 4px 15px rgba(220, 38, 38, 0.6);
+      border-color: #ef4444;
     }
     .checkout-section, .contact-section {
       max-width: 600px;
       margin: 40px auto;
-      background: linear-gradient(145deg, #1e40af, #1d4ed8);
+      background: linear-gradient(145deg, #7f1d1d, #991b1b);
       padding: 30px;
       border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+      box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
       color: #fff;
-      border: 2px solid #3b82f6;
+      border: 2px solid #dc2626;
       position: relative;
       overflow: hidden;
     }
@@ -63,7 +75,7 @@
       left: 0;
       right: 0;
       height: 3px;
-      background: linear-gradient(90deg, #60a5fa, #3b82f6, #60a5fa);
+      background: linear-gradient(90deg, #ef4444, #dc2626, #ef4444);
       animation: shimmer 2s infinite;
     }
     @keyframes shimmer {
@@ -74,42 +86,42 @@
       display: block;
       margin-top: 15px;
       font-weight: bold;
-      color: #bfdbfe;
+      color: #fca5a5;
     }
     input, select, textarea {
       width: 100%;
       padding: 12px;
       margin-top: 5px;
-      border: 2px solid #3b82f6;
+      border: 2px solid #dc2626;
       border-radius: 8px;
       box-sizing: border-box;
       font-size: 16px;
-      background: linear-gradient(145deg, #1d4ed8, #1e40af);
+      background: linear-gradient(145deg, #991b1b, #7f1d1d);
       color: #fff;
       resize: vertical;
       transition: all 0.3s ease;
     }
     input:focus, select:focus, textarea:focus {
-      border-color: #60a5fa;
-      box-shadow: 0 0 10px rgba(96, 165, 250, 0.4);
+      border-color: #ef4444;
+      box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
       outline: none;
     }
     input::placeholder {
-      color: #93c5fd;
+      color: #f87171;
     }
     .checkout-button, .send-button {
       margin-top: 25px;
       width: 100%;
       padding: 15px;
-      background: linear-gradient(145deg, #3b82f6, #60a5fa);
+      background: linear-gradient(145deg, #dc2626, #ef4444);
       color: #ffffff;
       font-size: 16px;
       font-weight: bold;
-      border: 2px solid #60a5fa;
+      border: 2px solid #ef4444;
       border-radius: 25px;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+      box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
       position: relative;
       overflow: hidden;
     }
@@ -127,20 +139,20 @@
       left: 100%;
     }
     .checkout-button:hover, .send-button:hover {
-      background: linear-gradient(145deg, #60a5fa, #93c5fd);
+      background: linear-gradient(145deg, #ef4444, #f87171);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
-      border-color: #93c5fd;
+      box-shadow: 0 6px 20px rgba(220, 38, 38, 0.6);
+      border-color: #f87171;
     }
     .checkout-button:active, .send-button:active {
       transform: translateY(0);
-      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+      box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
     }
     #checkout-form, #contact-form {
       margin-top: 10px;
     }
     h1 {
-      color: #e0f2fe;
+      color: #fecaca;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
       animation: float 3s ease-in-out infinite;
     }
@@ -150,7 +162,7 @@
     }
     footer {
       text-align: center;
-      color: #bfdbfe;
+      color: #fca5a5;
       padding: 20px;
       margin-top: 40px;
       font-size: 14px;
@@ -182,7 +194,7 @@
       <select id="product" name="product" required>
         <option value="">--Choose a product--</option>
         <option value="Product 2">Free Bot</option>
-        <option value="Product 3">Free Nitro</option>
+        <option value="Product 3">Free Rank</option>
       </select>
 
       <label for="address">Address</label>
