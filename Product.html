@@ -13,22 +13,37 @@
 
     body {
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #001122 0%, #002244 50%, #003366 100%);
+      background: radial-gradient(ellipse at center, #1a1a1a 0%, #000000 70%, #000000 100%);
+      background-attachment: fixed;
       color: #ffffff;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.02) 50%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
     }
 
     header {
-      background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #2563eb 100%);
+      background: linear-gradient(135deg, #8B0000 0%, #DC143C 50%, #B22222 100%);
       color: #ffffff;
       padding: 30px 20px;
       text-align: center;
-      border-bottom: 4px solid #3b82f6;
-      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+      border-bottom: 4px solid #FF4500;
+      box-shadow: 0 8px 25px rgba(220, 20, 60, 0.4);
       position: relative;
       overflow: hidden;
+      z-index: 2;
     }
 
     header::before {
@@ -49,8 +64,8 @@
 
     header h1 {
       font-size: 2.5rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      background: linear-gradient(45deg, #e0f2fe, #bfdbfe, #93c5fd);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      background: linear-gradient(45deg, #FF6347, #FF4500, #DC143C);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -62,14 +77,16 @@
       padding: 50px 20px;
       text-align: center;
       flex: 1;
-      background: linear-gradient(180deg, rgba(59, 130, 246, 0.05) 0%, rgba(147, 197, 253, 0.02) 100%);
+      background: linear-gradient(180deg, rgba(220, 20, 60, 0.05) 0%, rgba(139, 0, 0, 0.02) 100%);
+      position: relative;
+      z-index: 2;
     }
 
     .section-title {
       font-size: 1.8rem;
-      color: #60a5fa;
+      color: #FF4500;
       margin-bottom: 30px;
-      text-shadow: 1px 1px 2px rgba(96, 165, 250, 0.3);
+      text-shadow: 1px 1px 2px rgba(255, 69, 0, 0.3);
     }
 
     .product-grid {
@@ -82,15 +99,16 @@
     }
 
     .product {
-      background: linear-gradient(135deg, #f0f9ff 0%, #dbeafe 50%, #bfdbfe 100%);
-      border: 2px solid #93c5fd;
+      background: linear-gradient(135deg, rgba(139, 0, 0, 0.3) 0%, rgba(178, 34, 34, 0.2) 50%, rgba(220, 20, 60, 0.1) 100%);
+      border: 2px solid rgba(220, 20, 60, 0.4);
       border-radius: 15px;
       padding: 30px 25px;
-      box-shadow: 0 10px 30px rgba(147, 197, 253, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
       transition: all 0.4s ease;
       position: relative;
       overflow: hidden;
-      color: #1e293b;
+      color: #ffffff;
+      backdrop-filter: blur(10px);
     }
 
     .product::before {
@@ -100,7 +118,7 @@
       left: 0;
       right: 0;
       height: 4px;
-      background: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd, #60a5fa, #3b82f6);
+      background: linear-gradient(90deg, #DC143C, #FF4500, #B22222, #FF4500, #DC143C);
       background-size: 200% 100%;
       animation: gradient-flow 3s ease-in-out infinite;
     }
@@ -112,8 +130,8 @@
 
     .product:hover {
       transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 20px 50px rgba(59, 130, 246, 0.4);
-      border-color: #3b82f6;
+      box-shadow: 0 20px 50px rgba(220, 20, 60, 0.4);
+      border-color: #FF4500;
     }
 
     .product:hover::before {
@@ -124,18 +142,18 @@
     .product h3 {
       margin-top: 0;
       margin-bottom: 15px;
-      color: #1e40af;
+      color: #DC143C;
       font-size: 1.4rem;
       font-weight: 700;
-      text-shadow: 1px 1px 2px rgba(30, 64, 175, 0.2);
-      background: linear-gradient(45deg, #1e40af, #2563eb);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      background: linear-gradient(45deg, #DC143C, #FF4500);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
     .product p {
-      color: #475569;
+      color: #e0e0e0;
       margin-bottom: 25px;
       line-height: 1.6;
       font-size: 1rem;
@@ -153,20 +171,20 @@
     }
 
     .status-available {
-      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
-      color: #166534;
-      border: 1px solid #86efac;
+      background: linear-gradient(135deg, rgba(34, 139, 34, 0.3), rgba(50, 205, 50, 0.2));
+      color: #90EE90;
+      border: 1px solid rgba(144, 238, 144, 0.5);
     }
 
     .status-coming-soon {
-      background: linear-gradient(135deg, #fef3c7, #fde68a);
-      color: #92400e;
-      border: 1px solid #fbbf24;
+      background: linear-gradient(135deg, rgba(255, 140, 0, 0.3), rgba(255, 165, 0, 0.2));
+      color: #FFA500;
+      border: 1px solid rgba(255, 165, 0, 0.5);
     }
 
     .buy-button {
       display: inline-block;
-      background: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%);
+      background: linear-gradient(135deg, #8B0000 0%, #DC143C 50%, #FF4500 100%);
       color: #ffffff;
       padding: 14px 28px;
       border: 2px solid transparent;
@@ -177,8 +195,8 @@
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 6px 20px rgba(220, 20, 60, 0.3);
     }
 
     .buy-button::before {
@@ -197,67 +215,69 @@
     }
 
     .buy-button:hover {
-      background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #3b82f6 100%);
+      background: linear-gradient(135deg, #DC143C 0%, #FF4500 50%, #FF6347 100%);
       transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(29, 78, 216, 0.4);
-      border-color: #93c5fd;
+      box-shadow: 0 12px 35px rgba(220, 20, 60, 0.4);
+      border-color: #FF6347;
     }
 
     .buy-button:active {
       transform: translateY(-1px);
-      box-shadow: 0 8px 25px rgba(29, 78, 216, 0.3);
+      box-shadow: 0 8px 25px rgba(220, 20, 60, 0.3);
     }
 
     .back-button {
       margin-top: 50px;
-      background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #3b82f6 100%);
+      background: linear-gradient(135deg, #8B0000 0%, #DC143C 50%, #B22222 100%);
       padding: 16px 32px;
       font-size: 18px;
       border-radius: 35px;
     }
 
     .back-button:hover {
-      background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 50%, #2563eb 100%);
+      background: linear-gradient(135deg, #DC143C 0%, #FF4500 50%, #FF6347 100%);
     }
 
     /* Special styling for specific products */
     .product.minecraft {
-      background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);
-      border-color: #0ea5e9;
+      background: linear-gradient(135deg, rgba(139, 0, 0, 0.4) 0%, rgba(178, 34, 34, 0.3) 50%, rgba(220, 20, 60, 0.2) 100%);
+      border-color: rgba(255, 69, 0, 0.5);
     }
 
     .product.discord-bot {
-      background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 50%, #c4b5fd 100%);
-      border-color: #8b5cf6;
+      background: linear-gradient(135deg, rgba(75, 0, 130, 0.4) 0%, rgba(138, 43, 226, 0.3) 50%, rgba(147, 112, 219, 0.2) 100%);
+      border-color: rgba(186, 85, 211, 0.5);
     }
 
     .product.nitro {
-      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #facc15 100%);
-      border-color: #eab308;
+      background: linear-gradient(135deg, rgba(184, 134, 11, 0.4) 0%, rgba(217, 119, 6, 0.3) 50%, rgba(245, 158, 11, 0.2) 100%);
+      border-color: rgba(251, 191, 36, 0.5);
     }
 
     .product.discord-bot h3 {
-      background: linear-gradient(45deg, #7c3aed, #8b5cf6);
+      background: linear-gradient(45deg, #8A2BE2, #BA55D3);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
     .product.nitro h3 {
-      background: linear-gradient(45deg, #d97706, #eab308);
+      background: linear-gradient(45deg, #DAA520, #FFD700);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
     footer {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
-      color: #94a3b8;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+      color: #c0c0c0;
       text-align: center;
       padding: 25px 20px;
-      border-top: 3px solid #3b82f6;
-      box-shadow: 0 -6px 20px rgba(59, 130, 246, 0.2);
+      border-top: 3px solid #DC143C;
+      box-shadow: 0 -6px 20px rgba(220, 20, 60, 0.2);
       margin-top: auto;
+      position: relative;
+      z-index: 2;
     }
 
     footer p {
@@ -321,14 +341,14 @@
       }
     }
 
-    /* Ocean wave decoration */
-    .ocean-wave {
+    /* Fire wave decoration */
+    .fire-wave {
       background: linear-gradient(45deg, 
-        #0ea5e9 0%, 
-        #0284c7 25%, 
-        #0369a1 50%, 
-        #075985 75%, 
-        #0c4a6e 100%);
+        #DC143C 0%, 
+        #FF4500 25%, 
+        #B22222 50%, 
+        #8B0000 75%, 
+        #A0522D 100%);
       height: 4px;
       width: 100%;
       margin: 30px 0;
@@ -349,7 +369,7 @@
 
   <section class="products-section">
     <h2 class="section-title">Discover Our Amazing Offerings</h2>
-    <div class="ocean-wave"></div>
+    <div class="fire-wave"></div>
     
     <div class="product-grid">
       <div class="product minecraft">
@@ -368,13 +388,13 @@
       
       <div class="product nitro">
         <div class="product-status status-coming-soon">Coming Soon</div>
-        <h3>Free Nitro</h3>
+        <h3>Free Rank</h3>
         <p>Discord Nitro benefits coming soon! Stay tuned for exciting updates and premium features.</p>
         <a href="learn-more.html" class="buy-button">Learn More</a>
       </div>
     </div>
 
-    <div class="ocean-wave"></div>
+    <div class="fire-wave"></div>
     
     <!-- Back button -->
     <a href="TheSocialHub.html" class="buy-button back-button">← Back to Home</a>
