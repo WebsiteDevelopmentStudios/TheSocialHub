@@ -13,32 +13,51 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #87CEEB 0%, #4682B4 50%, #1E90FF 100%);
+            background: linear-gradient(135deg, #000000 0%, #1a0000 25%, #000000 75%, #0d0d0d 100%);
+            background-attachment: fixed;
             min-height: 100vh;
             color: #ffffff;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(178, 34, 34, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(220, 20, 60, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
         }
 
         .back-button {
             position: fixed;
             top: 20px;
             left: 20px;
-            background: rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, #8B0000, #DC143C);
             backdrop-filter: blur(10px);
             color: #ffffff;
             text-decoration: none;
             padding: 12px 20px;
             border-radius: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 2px solid #DC143C;
             font-weight: bold;
             transition: all 0.3s ease;
             z-index: 1000;
+            box-shadow: 0 4px 15px rgba(220, 20, 60, 0.3);
         }
 
         .back-button:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg, #DC143C, #B22222);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 25px rgba(220, 20, 60, 0.5);
+            border-color: #B22222;
         }
 
         .container {
@@ -46,6 +65,7 @@
             margin: 0 auto;
             padding: 40px 20px;
             position: relative;
+            z-index: 2;
         }
 
         .header {
@@ -56,21 +76,26 @@
         .logo {
             width: 100px;
             height: 100px;
-            background: #ffffff;
+            background: linear-gradient(135deg, #8B0000, #DC143C);
             border-radius: 50%;
             margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 24px;
-            color: #2E86AB;
+            color: #ffffff;
             font-weight: bold;
+            border: 3px solid #DC143C;
+            box-shadow: 0 8px 25px rgba(220, 20, 60, 0.4);
         }
 
         h1 {
             font-size: 3rem;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            color: #DC143C;
+            font-weight: 900;
+            letter-spacing: 2px;
         }
 
         .floating-text {
@@ -96,26 +121,43 @@
         }
 
         .content-section {
-            background: rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(26, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.8) 100%);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 40px;
             margin-bottom: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(139, 0, 0, 0.5);
             position: relative;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.8),
+                inset 0 1px 0 rgba(220, 20, 60, 0.2);
+        }
+
+        .content-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #8B0000, #DC143C, #B22222);
+            opacity: 0.8;
         }
 
         .problem-title {
             font-size: 2rem;
-            color: #FFD700;
+            color: #DC143C;
             margin-bottom: 20px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         .problem-description {
             font-size: 1.2rem;
             line-height: 1.6;
             margin-bottom: 20px;
+            color: #cccccc;
         }
 
         .impact-list {
@@ -124,12 +166,20 @@
         }
 
         .impact-list li {
-            background: rgba(46, 134, 171, 0.3);
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.3), rgba(220, 20, 60, 0.1));
             margin: 10px 0;
             padding: 15px;
             border-radius: 10px;
-            border-left: 4px solid #FFD700;
+            border-left: 4px solid #DC143C;
             position: relative;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(139, 0, 0, 0.3);
+        }
+
+        .impact-list li:hover {
+            background: linear-gradient(135deg, rgba(220, 20, 60, 0.3), rgba(139, 0, 0, 0.2));
+            transform: translateX(5px);
+            border-left-color: #B22222;
         }
 
         .impact-list li::before {
@@ -142,6 +192,8 @@
             animation: floatSlow 4s ease-in-out infinite;
             opacity: 0.7;
             font-size: 2rem;
+            filter: sepia(1) hue-rotate(320deg) saturate(2);
+            z-index: 1;
         }
 
         .floating-warning:nth-child(1) {
@@ -172,12 +224,13 @@
         }
 
         .solution-hint {
-            background: linear-gradient(45deg, #2E86AB, #4682B4);
+            background: linear-gradient(45deg, #8B0000, #DC143C);
             padding: 25px;
             border-radius: 15px;
             margin-top: 20px;
             text-align: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(220, 20, 60, 0.4);
+            border: 2px solid #B22222;
         }
 
         .pulse {
@@ -187,12 +240,15 @@
         @keyframes pulse {
             0% {
                 transform: scale(1);
+                box-shadow: 0 10px 30px rgba(220, 20, 60, 0.4);
             }
             50% {
                 transform: scale(1.05);
+                box-shadow: 0 15px 40px rgba(220, 20, 60, 0.6);
             }
             100% {
                 transform: scale(1);
+                box-shadow: 0 10px 30px rgba(220, 20, 60, 0.4);
             }
         }
 
@@ -200,6 +256,41 @@
             text-align: center;
             margin-top: 40px;
             opacity: 0.8;
+            color: #888888;
+            padding: 20px;
+            border-top: 2px solid #8B0000;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+
+        /* Special styling for good news section */
+        .good-news {
+            border-color: rgba(178, 34, 34, 0.6);
+        }
+
+        .good-news::before {
+            background: linear-gradient(90deg, #B22222, #DC143C, #8B0000);
+        }
+
+        .good-news .impact-list li::before {
+            content: "✅";
+        }
+
+        .good-news .impact-list li {
+            border-left-color: #B22222;
+        }
+
+        /* Future updates section */
+        .future-updates {
+            border-color: rgba(220, 20, 60, 0.7);
+        }
+
+        .future-updates::before {
+            background: linear-gradient(90deg, #DC143C, #B22222, #DC143C);
+        }
+
+        .future-updates .impact-list li::before {
+            content: "🚀";
         }
 
         @media (max-width: 768px) {
@@ -214,11 +305,19 @@
             .floating-warning {
                 display: none;
             }
+
+            .back-button {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin-bottom: 20px;
+                display: inline-block;
+            }
         }
     </style>
 </head>
 <body>
-    <a href="TheSocialHub.html" class="back-button">Back to Home</a>
+    <a href="TheSocialHub.html" class="back-button">← Back to Home</a>
     
     <div class="floating-warning">🔧</div>
     <div class="floating-warning">⚡</div>
@@ -231,8 +330,8 @@
                 <span class="floating-text">Learn</span> 
                 <span class="floating-text">More</span> 
                 <span class="floating-text">!</span>
-                <span class="floating-tedt">!</span>
-                <span class="floating-tedt">!</span>
+                <span class="floating-text">!</span>
+                <span class="floating-text">!</span>
             </h1>
         </div>
 
@@ -251,7 +350,7 @@
             </ul>
         </div>
 
-        <div class="content-section">
+        <div class="content-section good-news">
             <h2 class="problem-title">📊 The Good news</h2>
             <p class="problem-description">
                 You heard some bad news, now its time for good news:
@@ -264,7 +363,7 @@
             </ul>
         </div>
 
-        <div class="content-section">
+        <div class="content-section future-updates">
             <h2 class="problem-title floating-text">💈Updates in the future💈</h2>
             <p class="problem-description">
                 BETTER LAYOUT, AWSOME PRODUCTS, MORE ACCESS.
