@@ -248,10 +248,15 @@
       window.open(fileUrl, '_blank');
     }
 
-    function download3() {
-      window.location.href = 'https://drive.google.com/uc?id=17pEyky63abRh1VA6N9nA4oKEn6CIiFlQ';
-      window.open(fileUrl, '_blank');
-    }
+  function download3() {
+    const fileUrl = 'https://drive.google.com/uc?export=download&id=17pEyky63abRh1VA6N9nA4oKEn6CIiFlQ';
+    const a = document.createElement('a');
+    a.href = fileUrl;
+    a.setAttribute('download', '');
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }
 
     function goBack() {
       window.location.href = 'https://thesocialhub.vercel.app/TheSocialHub.html';
